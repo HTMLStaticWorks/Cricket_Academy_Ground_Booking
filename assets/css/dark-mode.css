@@ -1,0 +1,57 @@
+/* 
+====================================================================
+  Light Mode Override (Default is Dark Mode based on specs)
+==================================================================== 
+*/
+
+body.light-mode {
+  --primary-bg: #F8FAFC;
+  --secondary-bg: #E2E8F0;
+  --card-bg: #FFFFFF;
+  --text-primary: #07111F;
+  --text-secondary: #475569;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --glow-effect: rgba(0, 194, 122, 0.1);
+}
+
+/* Specific light mode adjustments */
+body.light-mode .navbar {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+body.light-mode .navbar.scrolled {
+  background: rgba(248, 250, 252, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .btn-secondary {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+body.light-mode .card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .card:hover {
+  box-shadow: 0 10px 30px rgba(0, 194, 122, 0.15);
+}
+
+/* Page Header styling for Light Mode */
+body.light-mode .page-header {
+  background: #F1F5F9 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+body.light-mode .page-header h1 {
+  color: #0F172A !important;
+}
+
+body.light-mode .page-header p.text-secondary {
+  color: #475569 !important;
+}
+
+/* Mobile Navigation menu background for Light Mode */
+body.light-mode .nav-links {
+  background: rgba(248, 250, 252, 0.98);
+}

@@ -1,0 +1,56 @@
+/* 
+====================================================================
+  RTL Support
+==================================================================== 
+*/
+
+body[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+body[dir="rtl"] .logo {
+  flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .nav-actions,
+body[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .card::before {
+  background: radial-gradient(circle at top left, var(--glow-effect), transparent 60%);
+}
+
+body[dir="rtl"] .footer-link:hover {
+  padding-left: 0;
+  padding-right: 5px;
+}
+
+/* Animations in RTL */
+body[dir="rtl"] .slide-in-right {
+  animation-name: slide-in-left; /* Reverse animation */
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll to Top Button in RTL */
+body[dir="rtl"] .scroll-top-btn {
+  right: auto;
+  left: 30px;
+}
+
+@media (max-width: 768px) {
+  body[dir="rtl"] .scroll-top-btn {
+    left: 20px;
+  }
+}
