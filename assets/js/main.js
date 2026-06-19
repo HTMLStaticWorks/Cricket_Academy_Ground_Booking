@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Theme Toggle System (supports both desktop & mobile toggle buttons, classes and IDs)
   let themeToggleBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle');
-  
+
   function updateThemeIcons() {
     const isLightMode = document.body.classList.contains('light-mode');
     themeToggleBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle');
@@ -151,12 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
     header.addEventListener('click', () => {
       const item = header.parentElement;
       const isActive = item.classList.contains('active');
-      
+
       // Close other items
       document.querySelectorAll('.accordion-item').forEach(otherItem => {
         otherItem.classList.remove('active');
       });
-      
+
       if (!isActive) {
         item.classList.add('active');
       }

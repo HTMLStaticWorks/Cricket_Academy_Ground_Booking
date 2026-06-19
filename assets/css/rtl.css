@@ -71,3 +71,52 @@ body[dir="rtl"] .scroll-top-btn {
     left: 20px;
   }
 }
+
+/* =============================================
+   RTL FAQ Accordion — Text & Icon Alignment
+   ============================================= */
+
+/* Flip the flex row so icon sits on the left (inline-start in RTL)
+   and the question text spans fully to the right */
+body[dir="rtl"] .accordion-header {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* Make the span grow so it fills the available space and aligns right */
+body[dir="rtl"] .accordion-header span {
+  flex: 1;
+  text-align: right;
+}
+
+/* Keep the caret icon from shrinking and add a small left gap from the text */
+body[dir="rtl"] .accordion-header i {
+  flex-shrink: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Mobile-specific reinforcement for RTL accordion */
+@media (max-width: 768px) {
+  body[dir="rtl"] .accordion-header {
+    flex-direction: row-reverse;
+    text-align: right;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  body[dir="rtl"] .accordion-header span {
+    flex: 1;
+    text-align: right;
+    word-break: break-word;
+  }
+
+  body[dir="rtl"] .accordion-content {
+    padding: 0 20px;
+    text-align: right;
+  }
+
+  body[dir="rtl"] .accordion-content p {
+    text-align: right;
+  }
+}
