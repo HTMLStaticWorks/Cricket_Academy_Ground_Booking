@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    /* Dashboard Layout */
+    .dashboard-layout {
+      display: flex;
+      min-height: 100vh;
+      background-color: var(--primary-bg);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background-color: var(--secondary-bg);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-nav {
+      padding: 24px 0;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 24px;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+      border-left: 3px solid transparent;
+      font-weight: 500;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: rgba(0, 194, 122, 0.1);
+      color: var(--primary-accent);
+      border-left-color: var(--primary-accent);
+    }
+
+    .nav-item i {
+      font-size: 20px;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex-grow: 1;
+      margin-left: 280px;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    /* Topbar */
+    .topbar {
+      height: 80px;
+      background: rgba(14, 26, 44, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    body.light-mode .topbar {
+      background: rgba(248, 250, 252, 0.8) !important;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 600;
+      font-family: var(--font-primary);
+    }
+
+    /* Dashboard Widgets */
+    .dashboard-body {
+      padding: 40px;
+    }
+
+    .widget-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .widget-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .widget-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, var(--glow-effect), transparent 70%);
+      opacity: 0.5;
+      transform: translate(30%, -30%);
+    }
+
+    .widget-title {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .widget-value {
+      font-size: 32px;
+      font-family: var(--font-primary);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Analytics Image Container */
+    .analytics-preview {
+      width: 100%;
+      height: 300px;
+      border-radius: 16px;
+      background: url('assets/images/dashboard_analytics.png') center/cover no-repeat;
+      border: 1px solid var(--border-color);
+      margin-bottom: 40px;
+    }
+
+    /* Tables */
+    .data-table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive table {
+      min-width: 700px;
+    }
+
+    .table-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 16px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .status.confirmed {
+      background: rgba(0, 194, 122, 0.1);
+      color: var(--primary-accent);
+    }
+
+    .status.pending {
+      background: rgba(0, 158, 99, 0.1);
+      color: var(--secondary-accent);
+    }
+
+    /* RTL specific adjustments */
+    body[dir="rtl"] .main-content {
+      margin-left: 0;
+      margin-right: 280px;
+    }
+
+    body[dir="rtl"] .sidebar {
+      border-right: none;
+      border-left: 1px solid var(--border-color);
+    }
+
+    body[dir="rtl"] .nav-item {
+      border-left: none;
+      border-right: 3px solid transparent;
+    }
+
+    body[dir="rtl"] .nav-item:hover,
+    body[dir="rtl"] .nav-item.active {
+      border-right-color: var(--primary-accent);
+    }
+
+    body[dir="rtl"] th,
+    body[dir="rtl"] td {
+      text-align: right;
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        left: auto;
+        right: 0;
+        transform: translateX(100%);
+        transition: transform var(--transition-medium);
+        z-index: 1001;
+        border-right: none;
+        border-left: 1px solid var(--border-color);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      #dashboard-menu-toggle {
+        display: block !important;
+      }
+
+      #sidebar-close {
+        display: block !important;
+      }
+
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .dashboard-body {
+        padding: 20px;
+      }
+
+      .topbar {
+        padding: 0 20px;
+      }
+
+      .dashboard-mobile-logo {
+        display: flex !important;
+      }
+
+      .dashboard-desktop-title {
+        display: none !important;
+      }
+
+      .topbar-desktop-actions {
+        display: none !important;
+      }
+
+      .sidebar-footer {
+        display: flex !important;
+      }
+
+      /* RTL specific adjustments: slide from left instead of right */
+      body[dir="rtl"] .sidebar {
+        left: 0;
+        right: auto;
+        transform: translateX(-100%);
+        border-left: none;
+        border-right: 1px solid var(--border-color);
+      }
+
+      body[dir="rtl"] .sidebar.active {
+        transform: translateX(0);
+      }
+
+      body[dir="rtl"] .main-content {
+        margin-right: 0;
+      }
+
+      .widget-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Tab Content visibility */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords"
+    content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header d-flex align-center justify-between">
+        <a href="index.html" class="logo">
+          <i class="ph ph-baseball logo-icon"></i>
+          <span>CricElite</span>
+        </a>
+        <button class="icon-btn" id="sidebar-close" aria-label="Close Sidebar" style="display: none; font-size: 24px;">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-tab="overview"><i class="ph ph-squares-four"></i> Overview</a>
+        <a href="#" class="nav-item" data-tab="bookings"><i class="ph ph-calendar-plus"></i> Bookings</a>
+        <a href="#" class="nav-item" data-tab="performance"><i class="ph ph-chart-line-up"></i> Performance</a>
+        <a href="#" class="nav-item" data-tab="academy"><i class="ph ph-student"></i> Academy</a>
+        <a href="#" class="nav-item" data-tab="payments"><i class="ph ph-wallet"></i> Payments</a>
+        <a href="#" class="nav-item" data-tab="settings"><i class="ph ph-gear"></i> Settings</a>
+      </nav>
+      <!-- Mobile-only user action/profile footer inside the sidebar -->
+      <div class="sidebar-footer"
+        style="padding: 24px; border-top: 1px solid var(--border-color); display: none; flex-direction: column; gap: 16px;">
+        <div class="user-profile" style="display: flex; align-items: center; gap: 16px;">
+          <div class="avatar"
+            style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-accent); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600;">
+            JD</div>
+          <div style="line-height: 1.2;">
+            <div style="color: var(--text-primary); font-weight: 500;">John Doe</div>
+            <div style="font-size: 12px; color: var(--text-secondary);">Pro Member</div>
+          </div>
+        </div>
+        <div class="d-flex align-center" style="gap: 16px; margin-top: 8px;">
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme"><i class="ph ph-moon"></i></button>
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL"><i
+              class="ph ph-arrows-left-right"></i></button>
+          <button class="icon-btn" aria-label="Notifications"><i class="ph ph-bell"></i></button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar-left d-flex align-center" style="gap: 16px;">
+          <!-- Mobile logo, shown only on mobile/tablet view -->
+          <a href="index.html" class="logo dashboard-mobile-logo" style="display: none;">
+            <i class="ph ph-baseball logo-icon"></i>
+            <span>CricElite</span>
+          </a>
+          <!-- Desktop title, hidden on mobile/tablet view -->
+          <h2 class="dashboard-desktop-title" style="margin:0; font-size: 24px;">Dashboard</h2>
+        </div>
+        <div class="topbar-right d-flex align-center" style="gap: 16px;">
+          <!-- Desktop topbar elements, hidden on mobile/tablet view -->
+          <div class="topbar-desktop-actions d-flex align-center" style="gap: 24px;">
+            <button class="icon-btn theme-toggle-btn" id="theme-toggle"><i class="ph ph-moon"></i></button>
+            <button class="icon-btn rtl-toggle-btn" id="rtl-toggle" aria-label="Toggle RTL"><i
+                class="ph ph-arrows-left-right"></i></button>
+            <button class="icon-btn"><i class="ph ph-bell"></i></button>
+            <div class="user-profile">
+              <div class="avatar">JD</div>
+              <div style="line-height: 1.2;">
+                <div style="color: var(--text-primary); font-weight: 500;">John Doe</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">Pro Member</div>
+              </div>
+            </div>
+          </div>
+          <!-- Hamburger menu toggle, visible on mobile/tablet view on the right-most side -->
+          <button class="icon-btn" id="dashboard-menu-toggle" aria-label="Toggle Sidebar"
+            style="display: none; font-size: 24px;">
+            <i class="ph ph-list"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-body">
+
+        <!-- Overview Tab -->
+        <div id="tab-overview" class="tab-content active">
+          <div class="welcome-section mb-4">
+            <h1 style="font-size: 28px; margin-bottom: 4px; color: var(--text-primary);">Welcome Back!</h1>
+            <p class="text-secondary" style="margin: 0;">Here's an overview of your CricElite performance and bookings
+              today.</p>
+          </div>
+
+          <!-- Widgets -->
+          <div class="widget-grid">
+            <div class="widget-card">
+              <div class="widget-title">Upcoming Net Sessions</div>
+              <div class="widget-value">3 <span
+                  style="font-size: 16px; color: var(--text-secondary); font-weight: 400;">This Week</span></div>
+            </div>
+            <div class="widget-card">
+              <div class="widget-title">Ground Bookings</div>
+              <div class="widget-value">1 <span
+                  style="font-size: 16px; color: var(--text-secondary); font-weight: 400;">Next Weekend</span></div>
+            </div>
+            <div class="widget-card">
+              <div class="widget-title">Attendance Rate</div>
+              <div class="widget-value" style="color: var(--primary-accent);">92%</div>
+            </div>
+          </div>
+
+          <!-- Analytics Preview -->
+          <h3 class="mb-3">Performance Metrics</h3>
+          <div class="analytics-preview"></div>
+
+          <!-- Recent Bookings Table -->
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3 style="margin:0; font-size: 18px;">Recent Bookings</h3>
+              <a href="ground-booking.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;">New
+                Booking</a>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Booking ID</th>
+                    <th>Type</th>
+                    <th>Date & Time</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#BK-8492</td>
+                    <td>Net Practice (Bowling Machine)</td>
+                    <td>Oct 15, 2026 • 18:00 - 20:00</td>
+                    <td>Indoor Facility A</td>
+                    <td><span class="status confirmed">Confirmed</span></td>
+                  </tr>
+                  <tr>
+                    <td>#BK-8490</td>
+                    <td>Ground Booking (T20 Match)</td>
+                    <td>Oct 18, 2026 • 09:00 - 13:00</td>
+                    <td>Main Stadium Ground</td>
+                    <td><span class="status pending">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>#BK-8475</td>
+                    <td>Coaching Session (Batting)</td>
+                    <td>Oct 12, 2026 • 16:00 - 17:30</td>
+                    <td>Net C</td>
+                    <td><span class="status confirmed">Completed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bookings Tab -->
+        <div id="tab-bookings" class="tab-content">
+          <h3 class="mb-3">My Bookings</h3>
+          <p class="text-secondary mb-4">Manage and track your reserved ground slots and net practice sessions.</p>
+          <div class="grid grid-3">
+            <div class="card">
+              <span class="status confirmed mb-2" style="align-self: flex-start;">Confirmed</span>
+              <h3 class="mb-1" style="font-size: 20px;">Net Practice (Bowling Machine)</h3>
+              <p class="text-secondary" style="font-size: 14px; margin-bottom: 16px;">Indoor Facility A • Lane 2</p>
+              <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 24px;">
+                <i class="ph ph-calendar-blank" style="margin-right: 8px;"></i> Oct 15, 2026 • 18:00 - 20:00
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-secondary w-100" style="padding: 10px; font-size: 14px;">Reschedule</button>
+              </div>
+            </div>
+            <div class="card">
+              <span class="status pending mb-2" style="align-self: flex-start;">Pending Approval</span>
+              <h3 class="mb-1" style="font-size: 20px;">Ground Booking (T20 Match)</h3>
+              <p class="text-secondary" style="font-size: 14px; margin-bottom: 16px;">Main Stadium Ground</p>
+              <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 24px;">
+                <i class="ph ph-calendar-blank" style="margin-right: 8px;"></i> Oct 18, 2026 • 09:00 - 13:00
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-secondary w-100" style="padding: 10px; font-size: 14px;">Contact Admin</button>
+              </div>
+            </div>
+            <div class="card">
+              <span class="status confirmed mb-2"
+                style="align-self: flex-start; background: rgba(77, 168, 255, 0.1); color: var(--third-accent);">Completed</span>
+              <h3 class="mb-1" style="font-size: 20px;">Coaching Session (Batting)</h3>
+              <p class="text-secondary" style="font-size: 14px; margin-bottom: 16px;">Net Practice Complex • Net C</p>
+              <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 24px;">
+                <i class="ph ph-calendar-blank" style="margin-right: 8px;"></i> Oct 12, 2026 • 16:00 - 17:30
+              </div>
+              <button class="btn btn-secondary w-100" style="padding: 10px; font-size: 14px;">Review Session</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Tab -->
+        <div id="tab-performance" class="tab-content">
+          <h3 class="mb-3">Performance Diagnostics</h3>
+          <p class="text-secondary mb-4">Review motion tracking speed indicators, sensor angles, and timing parameters
+            logged by our Biomechanical Performance Lab.</p>
+          <div class="grid grid-3 mb-4">
+            <div class="widget-card">
+              <div class="widget-title">Average Bat Speed</div>
+              <div class="widget-value" style="color: var(--primary-accent);">86 <span
+                  style="font-size: 16px; font-weight: 400; color: var(--text-secondary);">mph</span></div>
+            </div>
+            <div class="widget-card">
+              <div class="widget-title">Max Bowling Speed</div>
+              <div class="widget-value" style="color: var(--third-accent);">124 <span
+                  style="font-size: 16px; font-weight: 400; color: var(--text-secondary);">km/h</span></div>
+            </div>
+            <div class="widget-card">
+              <div class="widget-title">Strike Accuracy</div>
+              <div class="widget-value" style="color: var(--premium-accent);">78%</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="mb-3" style="font-size: 20px;">Lab Diagnostics Log</h3>
+            <p class="text-secondary" style="font-size: 14px; margin-bottom: 20px;">Your last posture audit captured on
+              Oct 12 shows a 3-degree correction in bowling release point, reducing lower spine loading by 12%.</p>
+            <a href="services.html" class="btn btn-secondary"
+              style="align-self: flex-start; padding: 10px 20px; font-size: 14px;">Schedule Lab Session</a>
+          </div>
+        </div>
+
+        <!-- Academy Tab -->
+        <div id="tab-academy" class="tab-content">
+          <h3 class="mb-3">Academy Enrollment</h3>
+          <p class="text-secondary mb-4">View coaching courses and youth program cohorts you are currently enrolled in.
+          </p>
+          <div class="grid grid-2">
+            <div class="card">
+              <h3 class="mb-1" style="font-size: 22px;">Elite Fast Bowling Academy</h3>
+              <p class="text-secondary" style="font-size: 14px; margin-bottom: 20px;">Cohorts: Under-19 • Lead Coach:
+                Shane Bond</p>
+              <div style="font-size: 14px; margin-bottom: 24px; color: var(--text-primary);">
+                <strong>Schedule:</strong> Tuesdays & Thursdays • 16:00 - 18:00
+              </div>
+              <div
+                style="background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 12px;">
+                <div style="width: 75%; height: 100%; background: var(--primary-accent);"></div>
+              </div>
+              <div class="d-flex justify-between" style="font-size: 12px; color: var(--text-secondary);">
+                <span>Progress</span>
+                <span>75% Complete (18/24 sessions)</span>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="mb-1" style="font-size: 22px;">Modern Batting Masterclass</h3>
+              <p class="text-secondary" style="font-size: 14px; margin-bottom: 20px;">Short Course • Lead Coach: Gary
+                Kirsten</p>
+              <div style="font-size: 14px; margin-bottom: 24px; color: var(--text-primary);">
+                <strong>Schedule:</strong> Saturdays • 10:00 - 13:00
+              </div>
+              <div
+                style="background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 12px;">
+                <div style="width: 40%; height: 100%; background: var(--third-accent);"></div>
+              </div>
+              <div class="d-flex justify-between" style="font-size: 12px; color: var(--text-secondary);">
+                <span>Progress</span>
+                <span>40% Complete (4/10 sessions)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payments Tab -->
+        <div id="tab-payments" class="tab-content">
+          <h3 class="mb-3">Billing & Payments</h3>
+          <p class="text-secondary mb-4">View your digital booking transactions history, invoices status, and active
+            memberships billing cycles.</p>
+          <div class="data-table-container">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Invoice ID</th>
+                    <th>Billing Item</th>
+                    <th>Payment Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#INV-9284</td>
+                    <td>Ground Slot Booking (Oct 18 Match)</td>
+                    <td>Oct 05, 2026</td>
+                    <td>$120.00</td>
+                    <td><span class="status pending">Pending Approval</span></td>
+                  </tr>
+                  <tr>
+                    <td>#INV-9210</td>
+                    <td>Net Session Lane booking (Oct 15)</td>
+                    <td>Oct 02, 2026</td>
+                    <td>$30.00</td>
+                    <td><span class="status confirmed">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>#INV-9150</td>
+                    <td>Academy Membership - October Fee</td>
+                    <td>Sep 28, 2026</td>
+                    <td>$150.00</td>
+                    <td><span class="status confirmed">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="tab-settings" class="tab-content">
+          <h3 class="mb-3">Account Settings</h3>
+          <p class="text-secondary mb-4">Configure your profile, training interests, and dashboard options.</p>
+          <div class="card" style="max-width: 600px; padding: 24px;">
+            <form style="display: flex; flex-direction: column; gap: 20px;" onsubmit="event.preventDefault();">
+              <div>
+                <label style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Full
+                  Name</label>
+                <input type="text" value="John Doe"
+                  style="width: 100%; padding: 12px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; outline: none;">
+              </div>
+              <div>
+                <label style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Email
+                  Address</label>
+                <input type="email" value="john.doe@cricelite.com"
+                  style="width: 100%; padding: 12px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; outline: none;">
+              </div>
+              <div class="grid grid-2" style="gap: 16px;">
+                <div>
+                  <label
+                    style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Batting
+                    Profile</label>
+                  <select
+                    style="width: 100%; padding: 12px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; outline: none;">
+                    <option selected>Right Hand Batsman</option>
+                    <option>Left Hand Batsman</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Bowling
+                    Profile</label>
+                  <select
+                    style="width: 100%; padding: 12px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; outline: none;">
+                    <option selected>Right Arm Fast Medium</option>
+                    <option>Right Arm Off-Spin</option>
+                    <option>Left Arm Spin</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-primary" style="align-self: flex-start; padding: 12px 24px;">Save Settings</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('dashboard-menu-toggle');
+      const sidebarClose = document.getElementById('sidebar-close');
+      const sidebar = document.querySelector('.sidebar');
+
+      if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sidebar.classList.toggle('active');
+        });
+      }
+
+      if (sidebarClose && sidebar) {
+        sidebarClose.addEventListener('click', () => {
+          sidebar.classList.remove('active');
+        });
+      }
+
+      // Close sidebar when clicking on a nav-item
+      if (sidebar) {
+        const navItems = sidebar.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+          item.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+          });
+        });
+      }
+
+      // Tab switching logic
+      const tabs = document.querySelectorAll('.tab-content');
+      const navLinks = document.querySelectorAll('.nav-item');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetTab = link.getAttribute('data-tab');
+          if (targetTab) {
+            // Deactivate all links & tabs
+            navLinks.forEach(l => l.classList.remove('active'));
+            tabs.forEach(t => t.classList.remove('active'));
+
+            // Activate target link & tab
+            link.classList.add('active');
+            const targetEl = document.getElementById(`tab-${targetTab}`);
+            if (targetEl) {
+              targetEl.classList.add('active');
+            }
+          }
+        });
+      });
+
+      // Close sidebar when clicking outside
+      document.addEventListener('click', (e) => {
+        if (sidebar && sidebar.classList.contains('active')) {
+          if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+            sidebar.classList.remove('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

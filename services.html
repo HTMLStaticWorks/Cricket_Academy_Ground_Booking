@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .page-header {
+      padding: 160px 0 80px;
+      text-align: center;
+      background: #F1F5F9;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .page-header h1 {
+      color: #0F172A;
+    }
+
+    .page-header p.text-secondary {
+      color: #475569;
+    }
+
+    @media (min-width: 1025px) {
+      .services-lab-grid {
+        align-items: stretch !important;
+      }
+      .services-lab-img-container {
+        height: 100%;
+        display: flex;
+      }
+      .services-lab-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords"
+    content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph ph-baseball logo-icon"></i>
+        <span>CricElite</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <!-- Mobile-only Home Links -->
+        <a href="index.html" class="nav-link mobile-only">Home 1</a>
+        <a href="home-2.html" class="nav-link mobile-only">Home 2</a>
+
+        <!-- Desktop-only Home Dropdown -->
+        <div class="nav-dropdown desktop-only">
+          <a href="#" class="nav-link">Home <i class="ph ph-caret-down"
+              style="font-size: 12px; margin-left: 4px;"></i></a>
+          <div class="dropdown-content">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-2.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="academy-programs.html" class="nav-link">Programs</a>
+        <a href="ground-booking.html" class="nav-link">Ground Booking</a>
+        <a href="coaches.html" class="nav-link">Coaches</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+
+        <!-- Mobile-only actions inside hamburger -->
+        <div class="mobile-nav-actions mobile-only">
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+            <i class="ph ph-arrows-left-right"></i>
+          </button>
+          <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+            <i class="ph ph-squares-four"></i>
+          </a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Desktop-only actions -->
+      <div class="nav-actions desktop-only">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+          <i class="ph ph-squares-four"></i>
+        </a>
+        <a href="register.html" class="btn btn-primary">Sign Up</a>
+      </div>
+
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p class="text-secondary mx-auto" style="margin: 0 auto;">Comprehensive cricket development and facility
+        management solutions<br>for individuals, academies, and corporations.</p>
+    </div>
+  </header>
+
+  <!-- Services Grid -->
+  <section class="services-section">
+    <div class="container">
+      <div class="grid grid-3">
+        <!-- Service 1 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/coaching.jpg" alt="Cricket Coaching"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Cricket Coaching</h3>
+            <p class="text-secondary" style="font-size: 14px; flex-grow: 1;">Professional coaching programs for all age
+              groups led by certified former international and state players.</p>
+            <div class="card-footer" style="padding: 0; margin-top: auto; border-top: none; background: transparent;">
+              <a href="service-details.html" class="btn btn-secondary w-100">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/ground-book.jpg" alt="Ground Booking"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Ground Booking</h3>
+            <p class="text-secondary" style="font-size: 14px; flex-grow: 1;">Reserve our premium, well-maintained
+              cricket grounds for your matches, tournaments, or corporate events.</p>
+            <div class="card-footer" style="padding: 0; margin-top: auto; border-top: none; background: transparent;">
+              <a href="ground-booking.html" class="btn btn-primary w-100">Book Ground</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/net-practice.jpg" alt="Net Practice Sessions"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Net Practice Sessions</h3>
+            <p class="text-secondary" style="font-size: 14px; flex-grow: 1;">Book high-quality turf and astroturf net
+              sessions. Bowling machines and video analysis equipment available.</p>
+            <div class="card-footer" style="padding: 0; margin-top: auto; border-top: none; background: transparent;">
+              <a href="ground-booking.html" class="btn btn-primary w-100">Book Nets</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/membership.jpg" alt="Academy Membership"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Academy Membership</h3>
+            <p class="text-secondary" style="font-size: 14px; flex-grow: 1;">Join our elite academy for continuous
+              development, access to top-tier facilities, and personalized training plans.</p>
+            <div class="card-footer" style="padding: 0; margin-top: auto; border-top: none; background: transparent;">
+              <a href="pricing.html" class="btn btn-secondary w-100">View Plans</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/tournament.jpg" alt="Tournament Registration"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Tournament Registration</h3>
+            <p class="text-secondary" style="font-size: 14px; flex-grow: 1;">Participate in our highly competitive
+              seasonal tournaments. Register your team or join as an individual.</p>
+            <div class="card-footer" style="padding: 0; margin-top: auto; border-top: none; background: transparent;">
+              <a href="events.html" class="btn btn-secondary w-100">Register Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/corporates.jpg" alt="Corporate Events"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Corporate Events</h3>
+            <p class="text-secondary" style="font-size: 14px; flex-grow: 1;">Customized corporate cricket days featuring
+              match organization, catering, uniforms, and professional umpiring.</p>
+            <div class="card-footer" style="padding: 0; margin-top: auto; border-top: none; background: transparent;">
+              <a href="contact.html" class="btn btn-secondary w-100">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Added Section 1: Pro Shop & Custom Fittings -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Pro Shop & Custom Equipment Fittings</h2>
+      <p class="text-secondary mx-auto mb-5">Get fitted with the ideal weight, handle type, and sweet spot profile<br>of
+        English Willow bats tailored to your batting posture.</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="info-icon"
+            style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto 24px auto;">
+            <i class="ph ph-wrench"></i>
+          </div>
+          <h3 class="mb-2 text-center">Bat Knocking & Repairs</h3>
+          <p class="text-secondary text-center" style="font-size: 14px;">Professional machine knocking, toe guard
+            insertion, thread bindings, and complete willow restoration services.</p>
+        </div>
+        <div class="card">
+          <div class="info-icon"
+            style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto 24px auto;">
+            <i class="ph ph-shield"></i>
+          </div>
+          <h3 class="mb-2 text-center">Premium Safety Fitting</h3>
+          <p class="text-secondary text-center" style="font-size: 14px;">Personalized sizing for helmets, leg guards,
+            gloves, and spike footwear to maximize agility and comfort.</p>
+        </div>
+        <div class="card">
+          <div class="info-icon"
+            style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto 24px auto;">
+            <i class="ph ph-shopping-bag"></i>
+          </div>
+          <h3 class="mb-2 text-center">Elite Cricket Gear </h3>
+          <p class="text-secondary text-center" style="font-size: 14px;">Authorized retailer for top international
+            cricket brands, ensuring genuine grade-1 English willow and quality gear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 2: Biomechanical Lab -->
+  <section class="added-section"
+    style="background-color: var(--primary-bg); border-top: 1px solid var(--border-color); padding: 50px 0;">
+    <div class="container">
+      <div class="grid grid-2 align-center services-lab-grid">
+        <div>
+          <h2 class="mb-2" style="font-size: 32px;">Biomechanical Performance Lab</h2>
+          <p class="text-secondary mb-3">Our high-performance lab utilizes modern sensor mappings and multi-angle camera
+            networks to capture raw mechanics and refine player movement.</p>
+          <ul style="display: flex; flex-direction: column; gap: 10px;">
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-activity" style="color: var(--primary-accent); font-size: 20px;"></i>
+              3D posture capture of bowling release and stride
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-gauge" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Bat sensor acceleration, angle, and timing statistics
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-projector-screen" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Slow-motion overlay diagnostics with coaches
+            </li>
+          </ul>
+        </div>
+        <div class="services-lab-img-container" style="max-height: 280px; overflow: hidden; border-radius: 16px;">
+          <img src="assets/images/bio.jpg" alt="Biomechanical Lab" class="services-lab-img"
+            style="border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-height: 280px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 3: Corporate Events -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Corporate Corporate Packages</h2>
+      <p class="text-secondary mx-auto mb-4">Host your annual matches, team building sessions, or corporate
+        tournaments<br>at our professional-grade stadium facilities.</p>
+      <div style="display: flex; gap: 16px; justify-content: center;">
+        <a href="contact.html" class="btn btn-primary">Download Packages Catalog</a>
+        <a href="ground-booking.html" class="btn btn-secondary">Check Ground Availability</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <a href="index.html" class="logo mb-2">
+            <i class="ph ph-baseball logo-icon"></i>
+            <span>CricElite</span>
+          </a>
+          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance, stadium-grade experiences,<br>and modern digital booking technology.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <div class="footer-links">
+            <a href="academy-programs.html" class="footer-link">Programs</a>
+            <a href="coaches.html" class="footer-link">Our Coaches</a>
+            <a href="gallery.html" class="footer-link">Facility Gallery</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Bookings</h4>
+          <div class="footer-links">
+            <a href="ground-booking.html" class="footer-link">Ground Reservation</a>
+            <a href="ground-booking.html" class="footer-link">Net Sessions</a>
+            <a href="dashboard.html" class="footer-link">My Bookings</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Latest News</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

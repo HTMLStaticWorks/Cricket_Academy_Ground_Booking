@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .soon-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(7, 17, 31, 0.9), var(--primary-bg)), url('assets/images/dashboard_analytics.png') no-repeat center/cover;
+    }
+    .form-control {
+      width: 100%;
+      max-width: 400px;
+      padding: 14px 20px;
+      background: rgba(14, 26, 44, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      margin-right: 10px;
+    }
+    .notify-form {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    @media (max-width: 768px) {
+      .notify-form { flex-direction: column; gap: 16px; align-items: center; }
+      .form-control { margin-right: 0; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords" content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+<body>
+  <div class="soon-page">
+    <div class="container">
+      <h1 class="mb-3" style="font-size: 60px;">Something Elite is Coming</h1>
+      <p class="text-secondary mx-auto mb-5" style="font-size: 20px;">We are preparing the pitch for our next big feature.<br>Stay tuned to elevate your game.</p>
+      
+      <div class="notify-form">
+        <input type="email" class="form-control" placeholder="Enter your email address">
+        <button class="btn btn-primary">Notify Me</button>
+      </div>
+      
+      <div class="mt-5">
+        <a href="index.html" class="text-accent" style="font-weight: 500;"><i class="ph ph-arrow-left"></i> Back to Home</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

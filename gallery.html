@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .page-header {
+      padding: 160px 0 80px;
+      text-align: center;
+      background: #F1F5F9;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .page-header h1 {
+      color: #0F172A;
+    }
+
+    .page-header p.text-secondary {
+      color: #475569;
+    }
+
+    /* Uniform Grid Layout */
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .masonry-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .masonry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-item {
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+      display: block;
+      transition: transform 0.5s ease;
+      background-color: transparent !important;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 194, 122, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .overlay-icon {
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .overlay-text {
+      color: #fff;
+      font-weight: 500;
+      font-family: var(--font-primary);
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords"
+    content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph ph-baseball logo-icon"></i>
+        <span>CricElite</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <!-- Mobile-only Home Links -->
+        <a href="index.html" class="nav-link mobile-only">Home 1</a>
+        <a href="home-2.html" class="nav-link mobile-only">Home 2</a>
+
+        <!-- Desktop-only Home Dropdown -->
+        <div class="nav-dropdown desktop-only">
+          <a href="#" class="nav-link">Home <i class="ph ph-caret-down"
+              style="font-size: 12px; margin-left: 4px;"></i></a>
+          <div class="dropdown-content">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-2.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="academy-programs.html" class="nav-link">Programs</a>
+        <a href="ground-booking.html" class="nav-link">Ground Booking</a>
+        <a href="coaches.html" class="nav-link">Coaches</a>
+        <a href="gallery.html" class="nav-link active">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+
+        <!-- Mobile-only actions inside hamburger -->
+        <div class="mobile-nav-actions mobile-only">
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+            <i class="ph ph-arrows-left-right"></i>
+          </button>
+          <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+            <i class="ph ph-squares-four"></i>
+          </a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Desktop-only actions -->
+      <div class="nav-actions desktop-only">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+          <i class="ph ph-squares-four"></i>
+        </a>
+        <a href="register.html" class="btn btn-primary">Sign Up</a>
+      </div>
+
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Facility Gallery</h1>
+      <p class="text-secondary mx-auto" style="max-width: 600px; margin: 0 auto;">A glimpse into our state-of-the-art
+        infrastructure, training sessions, and tournament moments.</p>
+    </div>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <div class="container">
+
+      <div class="text-center mb-5">
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" style="padding: 8px 20px;">All</button>
+          <button class="btn btn-secondary" style="padding: 8px 20px;">Training</button>
+          <button class="btn btn-secondary" style="padding: 8px 20px;">Grounds</button>
+          <button class="btn btn-secondary" style="padding: 8px 20px;">Tournaments</button>
+        </div>
+      </div>
+
+      <div class="masonry-grid">
+
+        <div class="gallery-item">
+          <img src="assets/images/gallery1.jpg" alt="Stadium Lights" class="gallery-img">
+          <div class="gallery-overlay">
+            <i class="ph ph-magnifying-glass-plus overlay-icon"></i>
+            <span class="overlay-text">Main Stadium</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gallery2.jpg" alt="Training Session" class="gallery-img">
+          <div class="gallery-overlay">
+            <i class="ph ph-magnifying-glass-plus overlay-icon"></i>
+            <span class="overlay-text">Net Practice</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gallery3.jpg" alt="Analytics Room" class="gallery-img">
+          <div class="gallery-overlay">
+            <i class="ph ph-magnifying-glass-plus overlay-icon"></i>
+            <span class="overlay-text">Analytics Center</span>
+          </div>
+        </div>
+
+        <!-- Repeated placeholders for masonry effect -->
+        <div class="gallery-item">
+          <img src="assets/images/gallery4.jpg" alt="Training" class="gallery-img">
+          <div class="gallery-overlay">
+            <i class="ph ph-magnifying-glass-plus overlay-icon"></i>
+            <span class="overlay-text">Coaching Session</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/images/gallery5.jpg" alt="Stadium" class="gallery-img">
+          <div class="gallery-overlay">
+            <i class="ph ph-magnifying-glass-plus overlay-icon"></i>
+            <span class="overlay-text">Ground</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/gallery6.jpg" alt="tournament" class="gallery-img">
+          <div class="gallery-overlay">
+            <i class="ph ph-magnifying-glass-plus overlay-icon"></i>
+            <span class="overlay-text">Night Match</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Added Section 1: Live Video Highlights -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Live Session Highlights</h2>
+      <p class="text-secondary mx-auto mb-5">Watch our latest match recordings,
+        high-performance coaching clips, and<br> student progress video analytics.</p>
+      <div class="grid grid-3">
+        <div class="card" style="padding: 0; overflow: hidden; border-radius: 12px;">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; background: #000;">
+            <img src="assets/images/academy_training.png" alt="Video cover"
+              style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.7;">
+            <div
+              style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: var(--primary-accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px; cursor:pointer; box-shadow: 0 0 20px rgba(0, 194, 122, 0.4);">
+              <i class="ph ph-play"></i>
+            </div>
+          </div>
+          <div style="padding: 20px; text-align: left;">
+            <h4 style="color: var(--text-primary); margin-bottom: 8px;">Power Hitting Drills</h4>
+            <p class="text-secondary" style="font-size: 14px; margin-bottom: 0;">Specialized session with coach
+              highlighting batting stance adjustments.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; border-radius: 12px;">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; background: #000;">
+            <img src="assets/images/hero_stadium_lights.png" alt="Video cover"
+              style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.7;">
+            <div
+              style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: var(--primary-accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px; cursor:pointer; box-shadow: 0 0 20px rgba(0, 194, 122, 0.4);">
+              <i class="ph ph-play"></i>
+            </div>
+          </div>
+          <div style="padding: 20px; text-align: left;">
+            <h4 style="color: var(--text-primary); margin-bottom: 8px;">T20 Weekend Cup Final</h4>
+            <p class="text-secondary" style="font-size: 14px; margin-bottom: 0;">Match recap showcasing stadium
+              atmosphere and peak performance moments.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; border-radius: 12px;">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; background: #000;">
+            <img src="assets/images/dashboard_analytics.png" alt="Video cover"
+              style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.7;">
+            <div
+              style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: var(--primary-accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px; cursor:pointer; box-shadow: 0 0 20px rgba(0, 194, 122, 0.4);">
+              <i class="ph ph-play"></i>
+            </div>
+          </div>
+          <div style="padding: 20px; text-align: left;">
+            <h4 style="color: var(--text-primary); margin-bottom: 8px;">Spin Bowling Masterclass</h4>
+            <p class="text-secondary" style="font-size: 14px; margin-bottom: 0;">Re-evaluating release angles using
+              high-speed digital mapping technology.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 2: Nets Config Specifications -->
+  <section class="added-section"
+    style="background-color: var(--primary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="grid grid-2 align-center">
+        <div>
+          <h2 class="mb-4">Pitch and Net Configurations</h2>
+          <p class="text-secondary mb-4">CricElite academy boasts world-class practice infrastructure featuring multiple
+            clay and turf pitches, bowling machines, and video capture equipment for instant swing feedback.</p>
+          <ul style="display: flex; flex-direction: column; gap: 16px;">
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-check-circle" style="color: var(--primary-accent); font-size: 20px;"></i>
+              4 Turf Pitches with Natural Clay bases
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-check-circle" style="color: var(--primary-accent); font-size: 20px;"></i>
+              2 Indoor Net Lanes with programmable Bowling Machines
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-check-circle" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Luminance lighting system exceeding 1000 Lux
+            </li>
+          </ul>
+        </div>
+        <div>
+          <img src="assets/images/pitch-net.jpg" alt="Facility Net practice"
+            style="border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 3: Social Feed Grid -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Social Community Feed</h2>
+      <p class="text-secondary mx-auto mb-5">Connect with us on Instagram and Twitter to see
+        live photos posted daily by <br> our coaches and players using **#CricElite**.</p>
+      <div class="grid grid-4" style="gap: 16px;">
+        <div
+          style="border-radius: 12px; overflow: hidden; position: relative; aspect-ratio: 1; border: 1px solid var(--border-color);">
+          <img src="assets/images/feed1.jpg" alt="Insta Post" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div
+          style="border-radius: 12px; overflow: hidden; position: relative; aspect-ratio: 1; border: 1px solid var(--border-color);">
+          <img src="assets/images/feed2.jpg" alt="Insta Post" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div
+          style="border-radius: 12px; overflow: hidden; position: relative; aspect-ratio: 1; border: 1px solid var(--border-color);">
+          <img src="assets/images/feed3.jpg" alt="Insta Post" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div
+          style="border-radius: 12px; overflow: hidden; position: relative; aspect-ratio: 1; border: 1px solid var(--border-color);">
+          <img src="assets/images/feed4.jpg" alt="Insta Post" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-primary mt-5">Visit Our Facility</a>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <a href="index.html" class="logo mb-2">
+            <i class="ph ph-baseball logo-icon"></i>
+            <span>CricElite</span>
+          </a>
+          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance,
+            stadium-grade experiences,<br>and modern digital booking technology.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <div class="footer-links">
+            <a href="academy-programs.html" class="footer-link">Programs</a>
+            <a href="coaches.html" class="footer-link">Our Coaches</a>
+            <a href="gallery.html" class="footer-link">Facility Gallery</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Bookings</h4>
+          <div class="footer-links">
+            <a href="ground-booking.html" class="footer-link">Ground Reservation</a>
+            <a href="ground-booking.html" class="footer-link">Net Sessions</a>
+            <a href="dashboard.html" class="footer-link">My Bookings</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Latest News</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

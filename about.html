@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .page-header {
+      padding: 160px 0 80px;
+      text-align: center;
+      background: #F1F5F9;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .page-header h1 {
+      color: #0F172A;
+    }
+
+    .page-header p.text-secondary {
+      color: #475569;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+
+    @media (min-width: 1025px) {
+      .about-grid {
+        align-items: stretch;
+      }
+      .about-img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .stat-box {
+      background: rgba(14, 26, 44, 0.5);
+      border: 1px solid var(--border-color);
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-family: var(--font-primary);
+      color: var(--primary-accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords"
+    content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph ph-baseball logo-icon"></i>
+        <span>CricElite</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <!-- Mobile-only Home Links -->
+        <a href="index.html" class="nav-link mobile-only">Home 1</a>
+        <a href="home-2.html" class="nav-link mobile-only">Home 2</a>
+
+        <!-- Desktop-only Home Dropdown -->
+        <div class="nav-dropdown desktop-only">
+          <a href="#" class="nav-link">Home <i class="ph ph-caret-down"
+              style="font-size: 12px; margin-left: 4px;"></i></a>
+          <div class="dropdown-content">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-2.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="academy-programs.html" class="nav-link">Programs</a>
+        <a href="ground-booking.html" class="nav-link">Ground Booking</a>
+        <a href="coaches.html" class="nav-link">Coaches</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+
+        <!-- Mobile-only actions inside hamburger -->
+        <div class="mobile-nav-actions mobile-only">
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+            <i class="ph ph-arrows-left-right"></i>
+          </button>
+          <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+            <i class="ph ph-squares-four"></i>
+          </a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Desktop-only actions -->
+      <div class="nav-actions desktop-only">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+          <i class="ph ph-squares-four"></i>
+        </a>
+        <a href="register.html" class="btn btn-primary">Sign Up</a>
+      </div>
+
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>About CricElite</h1>
+      <p class="text-secondary mx-auto" style="margin: 0 auto;">Building the future of cricket through world-class
+        infrastructure<br>and elite coaching methodologies.</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section>
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <h2 class="mb-3">Our Mission</h2>
+          <p class="text-secondary mb-3">At CricElite, we believe in democratizing access to professional-grade cricket
+            facilities and coaching. Our ecosystem is built to bridge the gap between amateur passion and professional
+            excellence.</p>
+          <p class="text-secondary mb-4">Founded by former international players and sports technology experts, we
+            provide a holistic development pathway that incorporates advanced biomechanical analysis, mental
+            conditioning, and match-scenario training.</p>
+
+          <div class="grid grid-2 mt-4">
+            <div class="stat-box">
+              <div class="stat-number">15+</div>
+              <div class="text-secondary">Years Experience</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">5000+</div>
+              <div class="text-secondary">Trained Players</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">12</div>
+              <div class="text-secondary">Premium Grounds</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">20+</div>
+              <div class="text-secondary">Certified Coaches</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="assets/images/mission.jpg" alt="About Us" class="about-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Added Section 1: Our Journey & Milestones -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Our Journey & Milestones</h2>
+      <p class="text-secondary mx-auto mb-5">How we evolved from a localized training academy<br>into a national
+        benchmark for sports science and elite cricket facilities.</p>
+      <div class="grid grid-4" style="gap: 20px;">
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/2015.jpg" alt="The Genesis" style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h4 style="color: var(--primary-accent); margin-bottom: 8px;">2015</h4>
+            <h3 class="mb-2" style="font-size: 18px;">The Genesis</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Founded by former cricketers with a
+              single turf wicket and a vision to make professional cricket training accessible to all.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/2018.jpg" alt="Tech Integration"
+            style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h4 style="color: var(--primary-accent); margin-bottom: 8px;">2018</h4>
+            <h3 class="mb-2" style="font-size: 18px;">Tech Integration</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Introduced slow-motion video analysis,
+              speed sensors, and launched the digital dashboard to track player growth.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/2022.jpg" alt="Stadium Expansion"
+            style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h4 style="color: var(--primary-accent); margin-bottom: 8px;">2022</h4>
+            <h3 class="mb-2" style="font-size: 18px;">Stadium Expansion</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Acquired stadium-grade tournament
+              grounds with full night-lighting systems and turf wickets for official match exposure.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/2026.jpg" alt="National Footprint"
+            style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h4 style="color: var(--primary-accent); margin-bottom: 8px;">2026</h4>
+            <h3 class="mb-2" style="font-size: 18px;">National Footprint</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Trained over 5,000 athletes, produced
+              25+ state level players, and partnered with international training clubs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 2: Leadership & Strategic Advisors -->
+  <section class="added-section"
+    style="background-color: var(--primary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="mb-3">Leadership & Strategic Advisors</h2>
+        <p class="text-secondary mx-auto">Our programs and facilities are guided by an elite panel<br>of sports
+          scientists, former international captains, and analytics experts.</p>
+      </div>
+      <div class="grid grid-3" style="gap: 30px;">
+        <div class="card text-center"
+          style="padding: 30px; display: flex; flex-direction: column; align-items: center;">
+          <img src="assets/images/team1.jpg" alt="Sir Julian Fletcher"
+            style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--primary-accent); box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+          <h3 class="mb-1" style="font-size: 22px;">Sir Julian Fletcher</h3>
+          <h4
+            style="color: var(--primary-accent); font-weight: 500; font-size: 14px; margin-bottom: 16px; text-transform: uppercase;">
+            Chief Technical Advisor</h4>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Former international captain with over
+            150 test caps. Julian oversees the curriculum design and player pathway advancement models.</p>
+        </div>
+        <div class="card text-center"
+          style="padding: 30px; display: flex; flex-direction: column; align-items: center;">
+          <img src="assets/images/team2.jpg" alt="Dr. Aris Vance"
+            style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--primary-accent); box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+          <h3 class="mb-1" style="font-size: 22px;">Dr. Aris Vance</h3>
+          <h4
+            style="color: var(--primary-accent); font-weight: 500; font-size: 14px; margin-bottom: 16px; text-transform: uppercase;">
+            Director of Sports Science</h4>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Renowned specialist in sports medicine
+            and kinesiotherapy. Dr. Vance ensures physical conditioning and injury prevention are integrated into all
+            programs.</p>
+        </div>
+        <div class="card text-center"
+          style="padding: 30px; display: flex; flex-direction: column; align-items: center;">
+          <img src="assets/images/team3.jpg" alt="Marcus Thorne"
+            style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--primary-accent); box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+          <h3 class="mb-1" style="font-size: 22px;">Marcus Thorne</h3>
+          <h4
+            style="color: var(--primary-accent); font-weight: 500; font-size: 14px; margin-bottom: 16px; text-transform: uppercase;">
+            Head of Performance & Analytics</h4>
+          <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Pioneer in cricket biomechanical
+            modeling. Marcus directs the technology lab, integrating sensors and video audits into the player
+            dashboards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 3: Affiliations & Strategic Partnerships -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Affiliations & Strategic Partnerships</h2>
+      <p class="text-secondary mx-auto mb-5">We collaborate with leading global sports organizations, technology
+        innovators,<br>and medical institutions to deliver a world-class training ecosystem.</p>
+      <div class="grid grid-4" style="gap: 20px;">
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/global-net.jpg" alt="Global Performance Net"
+            style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h3 class="mb-2" style="font-size: 18px;">Global Performance Net</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Exchange programs with international
+              academies to expose local players to diverse pitches and climates.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/medicine.jpg" alt="Sports Medicine Union"
+            style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h3 class="mb-2" style="font-size: 18px;">Sports Medicine Union</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Joint research on player workload
+              management, posture analysis, and fast injury rehabilitation protocols.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/tech.jpg" alt="Tech Innovation Lab"
+            style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h3 class="mb-2" style="font-size: 18px;">Tech Innovation Lab</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Beta-testing partnership to implement
+              advanced motion-sensor bats and smart wicket technologies.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+          <img src="assets/images/virtual.jpg" alt="CricElite Foundation"
+            style="width: 100%; height: 130px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <h3 class="mb-2" style="font-size: 18px;">CricElite Foundation</h3>
+            <p class="text-secondary" style="font-size: 14px; line-height: 1.5;">Providing full scholarships, free
+              training gear, and facility access to promising grassroots talent.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <a href="index.html" class="logo mb-2">
+            <i class="ph ph-baseball logo-icon"></i>
+            <span>CricElite</span>
+          </a>
+          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance, stadium-grade experiences,<br>and modern digital booking technology.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <div class="footer-links">
+            <a href="academy-programs.html" class="footer-link">Programs</a>
+            <a href="coaches.html" class="footer-link">Our Coaches</a>
+            <a href="gallery.html" class="footer-link">Facility Gallery</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Bookings</h4>
+          <div class="footer-links">
+            <a href="ground-booking.html" class="footer-link">Ground Reservation</a>
+            <a href="ground-booking.html" class="footer-link">Net Sessions</a>
+            <a href="dashboard.html" class="footer-link">My Bookings</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Latest News</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

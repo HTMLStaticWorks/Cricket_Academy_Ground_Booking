@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CricElite | Digital Cricket Intelligence</title>
+  <meta name="description" content="Where Cricket Development Meets Smart Technology.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    /* Hero Section 2 Specifics */
+    .hero-2 {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      overflow: hidden;
+    }
+
+    .hero-2-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(0, 194, 122, 0.1) 0%, var(--primary-bg) 60%);
+      z-index: -2;
+    }
+
+    .hero-2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-2-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-2-content {
+        margin: 0 auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+    }
+
+    /* Animation System: Digital Cricket Intelligence */
+    .analytics-visual {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .metric-card {
+      position: absolute;
+      background: rgba(21, 37, 61, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--primary-accent);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 194, 122, 0.1);
+      animation: float 6s infinite ease-in-out;
+      z-index: 2;
+    }
+
+    .metric-card.top-right {
+      top: 10%;
+      right: 0;
+      animation-delay: -2s;
+    }
+
+    .metric-card.bottom-left {
+      bottom: 10%;
+      left: 0;
+      animation-delay: -4s;
+    }
+
+    .metric-title {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-family: var(--font-primary);
+      color: var(--primary-accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .performance-graph {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 255, 255, 0.1);
+      position: relative;
+      animation: spin 30s linear infinite;
+    }
+
+    .graph-ring {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 194, 122, 0.3);
+      border-top-color: var(--primary-accent);
+      animation: spin 15s linear infinite reverse;
+    }
+
+    .player-silhouette {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 250px;
+      background: linear-gradient(180deg, transparent, rgba(77, 168, 255, 0.2));
+      border-radius: 100px;
+      filter: blur(20px);
+      z-index: 0;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .data-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--third-accent), transparent);
+      width: 100%;
+      top: 50%;
+      left: -50%;
+      animation: scan 4s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes scan {
+      0% {
+        transform: translateX(0) translateY(-100px);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100px);
+      }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(77, 168, 255, 0.1);
+      border: 1px solid var(--third-accent);
+      color: var(--third-accent);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords"
+    content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph ph-baseball logo-icon"></i>
+        <span>CricElite</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <!-- Mobile-only Home Links -->
+        <a href="index.html" class="nav-link mobile-only">Home 1</a>
+        <a href="home-2.html" class="nav-link mobile-only active">Home 2</a>
+
+        <!-- Desktop-only Home Dropdown -->
+        <div class="nav-dropdown desktop-only">
+          <a href="#" class="nav-link active">Home <i class="ph ph-caret-down"
+              style="font-size: 12px; margin-left: 4px;"></i></a>
+          <div class="dropdown-content">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-2.html" class="dropdown-item active">Home 2</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="academy-programs.html" class="nav-link">Programs</a>
+        <a href="ground-booking.html" class="nav-link">Ground Booking</a>
+        <a href="coaches.html" class="nav-link">Coaches</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+
+        <!-- Mobile-only actions inside hamburger -->
+        <div class="mobile-nav-actions mobile-only">
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+            <i class="ph ph-arrows-left-right"></i>
+          </button>
+          <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+            <i class="ph ph-squares-four"></i>
+          </a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Desktop-only actions -->
+      <div class="nav-actions desktop-only">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+          <i class="ph ph-squares-four"></i>
+        </a>
+        <a href="register.html" class="btn btn-primary">Sign Up</a>
+      </div>
+
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-2">
+    <div class="hero-2-bg"></div>
+    <div class="container">
+      <div class="hero-2-grid">
+        <div class="hero-2-content">
+          <div class="hero-tag">Smart Analytics</div>
+          <h1>Where Cricket Development Meets Smart Technology</h1>
+          <p class="text-secondary" style="font-size: 18px; margin-top: 20px;">
+            Elevate your game with our data-driven approach. Track mechanics, monitor progress, and access elite
+            coaching backed by advanced sports science.
+          </p>
+          <div class="hero-actions">
+            <a href="dashboard.html" class="btn btn-primary">View Analytics</a>
+            <a href="academy-programs.html" class="btn btn-secondary">Explore Programs</a>
+          </div>
+        </div>
+
+        <div class="analytics-visual">
+          <div class="player-silhouette"></div>
+          <div class="performance-graph">
+            <div class="graph-ring"></div>
+            <div class="data-line"></div>
+          </div>
+
+          <div class="metric-card top-right">
+            <div class="metric-title">Swing Speed</div>
+            <div class="metric-value">
+              142 <span style="font-size: 14px; color: var(--text-secondary);">km/h</span>
+              <i class="ph ph-trend-up" style="color: var(--primary-accent); font-size: 16px;"></i>
+            </div>
+          </div>
+
+          <div class="metric-card bottom-left">
+            <div class="metric-title">Batting Impact</div>
+            <div class="metric-value" style="color: var(--third-accent);">
+              94<span style="font-size: 14px; color: var(--text-secondary);">%</span>
+              <i class="ph ph-target" style="color: var(--third-accent); font-size: 16px;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Preview -->
+  <section id="features" style="background-color: rgba(21, 37, 61, 0.3);">
+    <div class="container">
+      <div class="grid grid-3">
+        <!-- Feature Card 1 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/performance.jpg" alt="Performance Tracking"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Performance Tracking</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Real-time biomechanical
+              feedback and statistical analysis of every session.</p>
+          </div>
+        </div>
+        <!-- Feature Card 2 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/video-analyse.jpg" alt="Video Analysis"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Video Analysis</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Frame-by-frame breakdown of
+              your technique by professional coaches.</p>
+          </div>
+        </div>
+        <!-- Feature Card 3 -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/smart-schedule.jpg" alt="Smart Scheduling"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 22px;">Smart Scheduling</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Seamless digital ground booking
+              and net session reservation system.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Added Section 1: Connected Pitch IoT Sensors -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">The Connected Pitch: IoT Sensors</h2>
+      <p class="text-secondary mx-auto mb-5">Every net session is backed by our IoT network.<br>We capture telemetry
+        directly from your equipment to deliver instant data points.</p>
+      <div class="grid grid-3">
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/smart-bat.jpg" alt="Smart Bat Gyros"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 20px;">Smart Bat Gyros</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Multi-axis handle sensors
+              measure bat speed, backlift angle, rotation, and downswing time directly to the cloud.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/telemetery.jpg" alt="Telemetry Balls"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 20px;">Telemetry Balls</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Smart core cricket balls log
+              release speed, spin rate (RPM), seam wobble, and pitch bounce height dynamically.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/pitch-side.jpg" alt="Pitch-Side Receivers"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 20px;">Pitch-Side Receivers</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">High-bandwidth localized
+              antennas collect sensor data instantaneously with sub-millisecond transmission latency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 2: 3D Posture Biomechanical Lab -->
+  <section class="added-section"
+    style="background-color: var(--primary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="grid grid-2 align-center">
+        <div>
+          <h2 class="mb-4">3D Biomechanical Posture Lab</h2>
+          <p class="text-secondary mb-4">Our high-speed posture capture array uses depth-sensing technology to recreate
+            your body movement in three dimensions, pointing out inefficiencies and preventing muscle stress.</p>
+          <ul style="display: flex; flex-direction: column; gap: 16px;">
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-activity" style="color: var(--primary-accent); font-size: 20px;"></i>
+              240fps multi-camera skeletal overlays mapping joints and angles
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-shield-check" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Spinal stress load metrics to audit fast bowling run-ups
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-arrows-split" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Batting stride and balance diagnostics comparing profiles to elite players
+            </li>
+          </ul>
+        </div>
+        <div>
+          <img src="assets/images/3d.jpg" alt="3D Posture Lab"
+            style="border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 3: AI-Driven Performance Forecasts -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">AI Performance Forecasting</h2>
+      <p class="text-secondary mx-auto mb-5">Our predictive model processes your historical technique data,<br>offering
+        growth trendlines and recommending drills to isolate training weaknesses.</p>
+      <div class="grid grid-3">
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/trading.jpg" alt="Trendline Modeling"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 18px;">Trendline Modeling</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Automated mapping shows swing
+              speed progression and speed variance over selected timelines.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/stance.jpg" alt="Stance Recommendations"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 18px;">Stance Recommendations</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Algorithmic stance
+              recommendations based on bat-flow efficiency and head stability indices.</p>
+          </div>
+        </div>
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/deduction.jpg" alt="Weakness Detection"
+            style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-content text-center"
+            style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 class="mb-2" style="font-size: 18px;">Weakness Detection</h3>
+            <p class="text-secondary text-center" style="font-size: 14px; flex-grow: 1;">Identifies bowling zones and
+              ball lengths where batsman timing rating drops, isolating focus areas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 4: VR Simulator & Mental Conditioning -->
+  <section class="added-section"
+    style="background-color: var(--primary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="grid grid-2 align-center">
+        <div>
+          <img src="assets/images/virtual.jpg" alt="VR Simulator"
+            style="border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+        <div>
+          <h2 class="mb-4">VR Stadium Simulator & Net</h2>
+          <p class="text-secondary mb-4">Train your mind and reflexes in our immersive Virtual Reality nets. Recreate
+            real-world international stadium crowd noise and face simulated legendary deliveries to build peak mental
+            conditioning.</p>
+          <ul style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-projector-screen" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Simulated 140km/h swing and spin options matching first-class profiles
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-users" style="color: var(--primary-accent); font-size: 20px;"></i>
+              High-pressure crowd noises to test batting concentration and heart-rate management
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 5: CricElite Mobile Intelligence App -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color); padding: 80px 0;">
+    <div class="container">
+      <div class="grid grid-2 align-center">
+        <div>
+          <h2 class="mb-4">CricElite Mobile Intelligence</h2>
+          <p class="text-secondary mb-4">Take your cricket metrics, coaching reports, and net booking schedule anywhere.
+            Our mobile application provides instant performance diagnostics and live session reminders.</p>
+          <ul style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-bell-ringing" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Real-time notifications for bookings and technique diagnostics
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-barcode" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Digital member pass for contact-free entry to nets and facilities
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-trend-up" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Live kinesiotherapy logs, charts, and swing stats syncing
+            </li>
+          </ul>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="#" class="btn btn-primary" style="display: flex; align-items: center; gap: 8px;"><i
+                class="ph ph-app-store-logo" style="font-size: 20px;"></i> App Store</a>
+            <a href="#" class="btn btn-secondary" style="display: flex; align-items: center; gap: 8px;"><i
+                class="ph ph-google-play-logo" style="font-size: 20px;"></i> Google Play</a>
+          </div>
+        </div>
+        <div style="text-align: center; position: relative;">
+          <!-- Mockup graphic representing app UI -->
+          <div
+            style="background: linear-gradient(135deg, var(--card-bg), var(--primary-bg)); border: 1px solid var(--border-color); border-radius: 24px; padding: 40px; display: inline-block; max-width: 320px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); text-align: left;">
+            <div
+              style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+              <i class="ph ph-baseball" style="color: var(--primary-accent); font-size: 28px;"></i>
+              <div>
+                <h4 style="margin: 0; font-size: 16px; color: var(--text-primary);">CE Performance</h4>
+                <span class="text-secondary" style="font-size: 12px;">App v2.4.1</span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="text-secondary"
+                style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Latest
+                Session Run-up</div>
+              <div
+                style="font-size: 24px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                142.8 <span style="font-size: 14px; font-weight: 400; color: var(--text-secondary);">km/h</span>
+              </div>
+            </div>
+            <div
+              style="background: rgba(0, 194, 122, 0.05); border: 1px solid rgba(0, 194, 122, 0.1); border-radius: 8px; padding: 12px; font-size: 13px; color: var(--primary-accent); display: flex; gap: 8px; align-items: center;">
+              <i class="ph ph-sparkle"></i>
+              <span>Optimal shoulder release angle achieved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <a href="index.html" class="logo mb-2">
+            <i class="ph ph-baseball logo-icon"></i>
+            <span>CricElite</span>
+          </a>
+          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance, stadium-grade experiences,<br>and modern digital booking technology.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <div class="footer-links">
+            <a href="academy-programs.html" class="footer-link">Programs</a>
+            <a href="coaches.html" class="footer-link">Our Coaches</a>
+            <a href="gallery.html" class="footer-link">Facility Gallery</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Bookings</h4>
+          <div class="footer-links">
+            <a href="ground-booking.html" class="footer-link">Ground Reservation</a>
+            <a href="ground-booking.html" class="footer-link">Net Sessions</a>
+            <a href="dashboard.html" class="footer-link">My Bookings</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Latest News</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

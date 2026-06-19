@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ground Booking | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .page-header {
+      padding: 160px 0 80px;
+      text-align: center;
+      background: #F1F5F9;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .page-header h1 {
+      color: #0F172A;
+    }
+
+    .page-header p.text-secondary {
+      color: #475569;
+    }
+
+    .booking-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 1024px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .form-control,
+    .form-select {
+      width: 100%;
+      padding: 14px 20px;
+      background: rgba(14, 26, 44, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-secondary);
+      font-size: 16px;
+      transition: all var(--transition-fast);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 0 2px rgba(0, 194, 122, 0.2);
+    }
+
+    .calendar-widget {
+      background: rgba(14, 26, 44, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .time-slot {
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-secondary);
+    }
+
+    .time-slot:hover {
+      border-color: var(--primary-accent);
+      color: var(--primary-accent);
+    }
+
+    .time-slot.selected {
+      background: var(--primary-accent);
+      color: #fff;
+      border-color: var(--primary-accent);
+    }
+
+    .order-summary {
+      background: rgba(14, 26, 44, 0.8);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--border-color);
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 20px;
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords"
+    content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph ph-baseball logo-icon"></i>
+        <span>CricElite</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <!-- Mobile-only Home Links -->
+        <a href="index.html" class="nav-link mobile-only">Home 1</a>
+        <a href="home-2.html" class="nav-link mobile-only">Home 2</a>
+
+        <!-- Desktop-only Home Dropdown -->
+        <div class="nav-dropdown desktop-only">
+          <a href="#" class="nav-link">Home <i class="ph ph-caret-down"
+              style="font-size: 12px; margin-left: 4px;"></i></a>
+          <div class="dropdown-content">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-2.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="academy-programs.html" class="nav-link">Programs</a>
+        <a href="ground-booking.html" class="nav-link active">Ground Booking</a>
+        <a href="coaches.html" class="nav-link">Coaches</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+
+        <!-- Mobile-only actions inside hamburger -->
+        <div class="mobile-nav-actions mobile-only">
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+            <i class="ph ph-arrows-left-right"></i>
+          </button>
+          <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+            <i class="ph ph-squares-four"></i>
+          </a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Desktop-only actions -->
+      <div class="nav-actions desktop-only">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+          <i class="ph ph-squares-four"></i>
+        </a>
+        <a href="register.html" class="btn btn-primary">Sign Up</a>
+      </div>
+
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Reserve Facilities</h1>
+      <p class="text-secondary mx-auto">Book premium cricket grounds and net practice sessions<br>instantly with our digital booking system.</p>
+    </div>
+  </header>
+
+  <!-- Booking Section -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-container">
+        <div class="booking-grid">
+
+          <!-- Booking Form -->
+          <div class="booking-form">
+            <h2 class="mb-4">Booking Details</h2>
+
+            <div class="form-group">
+              <label class="form-label">Facility Type</label>
+              <select class="form-select">
+                <option value="net_turf">Turf Net Practice</option>
+                <option value="net_astro">Astroturf Net Practice</option>
+                <option value="ground_t20">Main Stadium Ground (T20)</option>
+                <option value="ground_practice">Practice Ground</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Select Date</label>
+              <div class="calendar-widget">
+                <p class="text-secondary mb-2">October 2026</p>
+                <!-- Simplified Calendar Mockup -->
+                <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;">
+                  <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                  <span style="opacity:0.3">27</span><span style="opacity:0.3">28</span><span
+                    style="opacity:0.3">29</span><span style="opacity:0.3">30</span><span
+                    style="opacity:0.3">1</span><span style="opacity:0.3">2</span><span style="opacity:0.3">3</span>
+                  <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span
+                    style="color:var(--primary-accent)">9</span><span
+                    style="background:var(--primary-accent); color:#fff; border-radius:4px;">10</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Select Time Slot</label>
+              <div class="time-slots">
+                <div class="time-slot">06:00 - 08:00</div>
+                <div class="time-slot">08:00 - 10:00</div>
+                <div class="time-slot">10:00 - 12:00</div>
+                <div class="time-slot">14:00 - 16:00</div>
+                <div class="time-slot selected">16:00 - 18:00</div>
+                <div class="time-slot">18:00 - 20:00</div>
+                <div class="time-slot">20:00 - 22:00 (Night)</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Add-ons</label>
+              <label
+                style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; color: var(--text-secondary); cursor: pointer;">
+                <input type="checkbox"> Bowling Machine (+$20/hr)
+              </label>
+              <label
+                style="display: flex; align-items: center; gap: 10px; color: var(--text-secondary); cursor: pointer;">
+                <input type="checkbox"> Video Recording (+$30/hr)
+              </label>
+            </div>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="booking-summary">
+            <div class="order-summary">
+              <h3 class="mb-4">Order Summary</h3>
+              <div class="summary-item">
+                <span>Facility</span>
+                <span style="color:var(--text-primary);">Turf Net Practice</span>
+              </div>
+              <div class="summary-item">
+                <span>Date</span>
+                <span style="color:var(--text-primary);">Oct 10, 2026</span>
+              </div>
+              <div class="summary-item">
+                <span>Time</span>
+                <span style="color:var(--text-primary);">16:00 - 18:00 (2 hrs)</span>
+              </div>
+              <div class="summary-item">
+                <span>Add-ons</span>
+                <span style="color:var(--text-primary);">None</span>
+              </div>
+
+              <div class="summary-total">
+                <span>Total Amount</span>
+                <span class="text-accent">$60.00</span>
+              </div>
+
+              <div class="mt-4">
+                <a href="dashboard.html" class="btn btn-primary w-100 mb-2">Proceed to Payment</a>
+                <p class="text-secondary text-center" style="font-size: 12px;">Secure payment powered by Stripe</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Added Section 1: Reservation Guidelines -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Booking Rules & Guidelines</h2>
+      <p class="text-secondary mx-auto mb-5">To ensure a seamless experience for all teams and individual players,<br>please review our standard reserve protocols.</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="info-icon mb-3"
+            style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto;">
+            <i class="ph ph-clock"></i></div>
+          <h3 class="mb-2">Booking Lead Time</h3>
+          <p class="text-secondary" style="font-size: 14px;">Ground bookings must be reserved at least 48 hours in
+            advance. Net practice sessions can be booked up to 2 hours prior to the slot.</p>
+        </div>
+        <div class="card">
+          <div class="info-icon mb-3"
+            style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto;">
+            <i class="ph ph-hand-coins"></i></div>
+          <h3 class="mb-2">Cancellation Policy</h3>
+          <p class="text-secondary" style="font-size: 14px;">Free cancellations are permitted up to 24 hours before your
+            slot. Late cancellations are subject to a 50% reservation fee.</p>
+        </div>
+        <div class="card">
+          <div class="info-icon mb-3"
+            style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto;">
+            <i class="ph ph-t-shirt"></i></div>
+          <h3 class="mb-2">Required Equipment</h3>
+          <p class="text-secondary" style="font-size: 14px;">Full safety gear (pads, helmets, gloves) is mandatory on
+            all turf pitches. Whites/cricket uniforms are required for stadium match play.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 2: Premium Ground Amenities -->
+  <section class="added-section"
+    style="background-color: var(--primary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="grid grid-2 align-center">
+        <div>
+          <h2 class="mb-4">Stadium-Grade Amenities</h2>
+          <p class="text-secondary mb-4">When you reserve our Main Stadium or Practice Ground, you gain access to
+            first-class supporting systems to host high-quality tournaments and corporate fixtures.</p>
+          <ul style="display: flex; flex-direction: column; gap: 16px;">
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-users-three" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Team Pavilion & Dressing Rooms with shower facilities
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-screencast" style="color: var(--primary-accent); font-size: 20px;"></i>
+              Digital LED Scoreboard and live stream camera mounts
+            </li>
+            <li style="display: flex; gap: 12px; align-items: center; color: var(--text-primary); font-weight: 500;">
+              <i class="ph ph-first-aid-kit" style="color: var(--primary-accent); font-size: 20px;"></i>
+              On-site first aid facilities and sports physio room
+            </li>
+          </ul>
+        </div>
+        <div>
+          <img src="assets/images/amenities.jpg" alt="Stadium Amenities"
+            style="border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Added Section 3: Booking Support FAQ -->
+  <section class="added-section"
+    style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Frequently Asked Questions</h2>
+      <p class="text-secondary mx-auto mb-5">Have questions about weather disruptions or corporate tour packages?<br>Contact our dedicated booking help desk.</p>
+      
+      <div class="faq-accordion" style="max-width: 800px; margin: 0 auto; text-align: left;">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>What happens if it rains during our slot?</span>
+            <i class="ph ph-caret-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>In case of rain, bookings on turf pitches are rescheduled at no extra cost, or a full refund is processed if rescheduling is impossible.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Can we book the stadium for a corporate tournament?</span>
+            <i class="ph ph-caret-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>Yes! We offer customized full-day tournament packages including umpires, ball boys, catering, and digital live streams. Contact support for customized quotes.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Are equipment rentals available on-site?</span>
+            <i class="ph ph-caret-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>Yes, we provide premium bats, pads, helmets, and balls for hire at the reception desk. Booking in advance is recommended.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Is there coaching available during ground hire?</span>
+            <i class="ph ph-caret-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>Ground hire is typically unassisted. However, you can book a certified CricElite coach to run training sessions during your booking through the Coaches page or our help desk.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="btn btn-primary mt-5">Contact Booking Desk</a>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <a href="index.html" class="logo mb-2">
+            <i class="ph ph-baseball logo-icon"></i>
+            <span>CricElite</span>
+          </a>
+          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance, stadium-grade experiences,<br>and modern digital booking technology.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <div class="footer-links">
+            <a href="academy-programs.html" class="footer-link">Programs</a>
+            <a href="coaches.html" class="footer-link">Our Coaches</a>
+            <a href="gallery.html" class="footer-link">Facility Gallery</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Bookings</h4>
+          <div class="footer-links">
+            <a href="ground-booking.html" class="footer-link">Ground Reservation</a>
+            <a href="ground-booking.html" class="footer-link">Net Sessions</a>
+            <a href="dashboard.html" class="footer-link">My Bookings</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Latest News</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

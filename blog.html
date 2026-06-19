@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .page-header {
+      padding: 160px 0 80px;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(7, 17, 31, 0.9), var(--primary-bg)), url('assets/images/hero_stadium_lights.png') no-repeat center/cover;
+    }
+
+    .blog-card {
+      padding: 0;
+    }
+
+    .blog-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 24px;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--primary-accent);
+      margin-bottom: 12px;
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords" content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="ph ph-baseball logo-icon"></i>
+        <span>CricElite</span>
+      </a>
+      
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link ">Home <i class="ph ph-caret-down" style="font-size: 12px; margin-left: 4px;"></i></a>
+          <div class="dropdown-content">
+            <a href="index.html" class="dropdown-item ">Home 1</a>
+            <a href="home-2.html" class="dropdown-item ">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link ">About</a>
+        <a href="services.html" class="nav-link ">Services</a>
+        <a href="academy-programs.html" class="nav-link ">Programs</a>
+        <a href="ground-booking.html" class="nav-link ">Ground Booking</a>
+        <a href="coaches.html" class="nav-link ">Coaches</a>
+        <a href="gallery.html" class="nav-link ">Gallery</a>
+        <a href="contact.html" class="nav-link ">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn" id="rtl-toggle" aria-label="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+          <i class="ph ph-squares-four"></i>
+        </a>
+        <a href="register.html" class="btn btn-primary">Sign Up</a>
+      </div>
+      
+      <button class="icon-btn mobile-menu-toggle">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Latest News & Insights</h1>
+      <p class="text-secondary mx-auto">Read about our latest tournaments, coaching tips,<br>and academy updates.</p>
+    </div>
+  </header>
+
+  <!-- Blog Section -->
+  <section>
+    <div class="container">
+      <div class="grid grid-3">
+        
+        <div class="card blog-card">
+          <img src="assets/images/academy_training.png" alt="Blog Post" class="blog-img">
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="ph ph-calendar"></i> Oct 12, 2026</span>
+              <span><i class="ph ph-user"></i> Coach David</span>
+            </div>
+            <h3 style="font-size: 20px;" class="mb-2"><a href="blog-details.html">Mastering the Cover Drive: Biomechanics Breakdown</a></h3>
+            <p class="text-secondary mb-4" style="font-size: 14px;">An in-depth look at head position, weight transfer, and the follow-through required to play the perfect cover drive.</p>
+            <a href="blog-details.html" class="btn btn-secondary w-100">Read Article</a>
+          </div>
+        </div>
+
+        <div class="card blog-card">
+          <img src="assets/images/dashboard_analytics.png" alt="Blog Post" class="blog-img">
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="ph ph-calendar"></i> Oct 05, 2026</span>
+              <span><i class="ph ph-user"></i> Admin</span>
+            </div>
+            <h3 style="font-size: 20px;" class="mb-2"><a href="blog-details.html">The Role of Data Analytics in Modern Cricket</a></h3>
+            <p class="text-secondary mb-4" style="font-size: 14px;">How our new performance dashboard helps young players identify weak zones and track their development over time.</p>
+            <a href="blog-details.html" class="btn btn-secondary w-100">Read Article</a>
+          </div>
+        </div>
+
+        <div class="card blog-card">
+          <img src="assets/images/hero_stadium_lights.png" alt="Blog Post" class="blog-img">
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="ph ph-calendar"></i> Sep 28, 2026</span>
+              <span><i class="ph ph-user"></i> Event Team</span>
+            </div>
+            <h3 style="font-size: 20px;" class="mb-2"><a href="blog-details.html">Winter Corporate League Registration Open</a></h3>
+            <p class="text-secondary mb-4" style="font-size: 14px;">Gather your colleagues and register for the premier corporate cricket tournament of the season under stadium lights.</p>
+            <a href="blog-details.html" class="btn btn-secondary w-100">Read Article</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Added Section 1 -->
+  <section class="added-section" style="background-color: rgba(14, 26, 44, 0.3); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Premium Feature 1</h2>
+      <p class="text-secondary mx-auto">Elevating the cricket experience through technology,<br>premium infrastructure, and elite coaching methodologies.<br>We provide an environment built for champions.</p>
+    </div>
+  </section>
+
+  <!-- Added Section 2 -->
+  <section class="added-section" style="background-color: rgba(14, 26, 44, 0.3); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Premium Feature 2</h2>
+      <p class="text-secondary mx-auto">Elevating the cricket experience through technology,<br>premium infrastructure, and elite coaching methodologies.<br>We provide an environment built for champions.</p>
+    </div>
+  </section>
+
+  <!-- Added Section 3 -->
+  <section class="added-section" style="background-color: rgba(14, 26, 44, 0.3); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+      <h2 class="mb-3">Premium Feature 3</h2>
+      <p class="text-secondary mx-auto">Elevating the cricket experience through technology,<br>premium infrastructure, and elite coaching methodologies.<br>We provide an environment built for champions.</p>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <a href="index.html" class="logo mb-2">
+            <i class="ph ph-baseball logo-icon"></i>
+            <span>CricElite</span>
+          </a>
+          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance, stadium-grade experiences,<br>and modern digital booking technology.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <div class="footer-links">
+            <a href="academy-programs.html" class="footer-link">Programs</a>
+            <a href="coaches.html" class="footer-link">Our Coaches</a>
+            <a href="gallery.html" class="footer-link">Facility Gallery</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Bookings</h4>
+          <div class="footer-links">
+            <a href="ground-booking.html" class="footer-link">Ground Reservation</a>
+            <a href="ground-booking.html" class="footer-link">Net Sessions</a>
+            <a href="dashboard.html" class="footer-link">My Bookings</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Latest News</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

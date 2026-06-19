@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | CricElite</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .auth-layout {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--primary-bg);
+      position: relative;
+      padding: 40px 20px;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .auth-card {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 480px) {
+      .auth-card {
+        padding: 24px;
+      }
+    }
+
+    .auth-actions {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      gap: 16px;
+      z-index: 10;
+    }
+
+    body[dir="rtl"] .auth-actions {
+      right: auto;
+      left: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 20px;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-secondary);
+      font-size: 16px;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 0 2px rgba(0, 194, 122, 0.2);
+    }
+
+    .auth-card a:not(.logo):hover {
+      text-decoration: underline;
+    }
+
+    /* Password Input Wrapper & Toggle */
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-wrapper .form-control {
+      padding-right: 50px;
+    }
+
+    body[dir="rtl"] .password-wrapper .form-control {
+      padding-right: 20px;
+      padding-left: 50px;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 20px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition-fast);
+    }
+
+    .password-toggle:hover {
+      color: var(--primary-accent);
+    }
+
+    body[dir="rtl"] .password-toggle {
+      right: auto;
+      left: 16px;
+    }
+
+    /* Custom Checkbox */
+    .checkbox-group {
+      margin-bottom: 24px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-secondary);
+      user-select: none;
+    }
+
+    .checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      width: 20px;
+      height: 20px;
+      background-color: rgba(7, 17, 31, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+
+    .checkbox-container:hover input~.checkmark {
+      border-color: var(--primary-accent);
+    }
+
+    .checkbox-container input:checked~.checkmark {
+      background-color: var(--primary-accent);
+      border-color: var(--primary-accent);
+    }
+
+    .checkmark::after {
+      content: "";
+      position: absolute;
+      display: none;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      top: 3px;
+    }
+
+    .checkbox-container input:checked~.checkmark::after {
+      display: block;
+    }
+
+    .checkbox-text {
+      line-height: 1.4;
+      font-family: var(--font-secondary);
+    }
+
+    /* Social Divider */
+    .social-divider {
+      position: relative;
+      text-align: center;
+      margin: 24px 0;
+    }
+
+    .social-divider::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--border-color);
+      z-index: 1;
+    }
+
+    .social-divider span {
+      position: relative;
+      background-color: var(--card-bg);
+      padding: 0 16px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      z-index: 2;
+    }
+
+    /* Social Buttons */
+    .social-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 480px) {
+      .social-buttons {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background-color: rgba(7, 17, 31, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-primary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-medium);
+    }
+
+    .social-btn:hover {
+      background-color: var(--primary-bg);
+      border-color: var(--primary-accent);
+      transform: translateY(-2px);
+    }
+
+    .social-btn i {
+      font-size: 18px;
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="keywords"
+    content="cricket academy, ground booking, net practice, professional coaching, cricket tournament">
+</head>
+
+<body>
+
+  <div class="auth-layout">
+    <!-- Theme & RTL Toggles (Absolutely positioned, not fixed) -->
+    <div class="auth-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+        <i class="ph ph-moon"></i>
+      </button>
+      <button class="icon-btn" id="rtl-toggle" aria-label="Toggle RTL">
+        <i class="ph ph-arrows-left-right"></i>
+      </button>
+    </div>
+
+    <div class="auth-container">
+
+      <div class="auth-card">
+        <!-- Logo inside of box -->
+        <a href="index.html" class="logo justify-center mb-4">
+          <i class="ph ph-baseball logo-icon" style="font-size: 32px;"></i>
+          <span style=" color: var(--text-primary);">CricElite</span>
+        </a>
+        <h2 class="text-center mb-2">Create Account</h2>
+        <p class="text-center text-secondary mb-4">Join our elite cricket community today.</p>
+
+        <form id="registerForm">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <div class="password-wrapper">
+              <input type="password" class="form-control password-input" placeholder="Create a password" required>
+              <button type="button" class="password-toggle" aria-label="Toggle Password Visibility">
+                <i class="ph ph-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Confirm Password</label>
+            <div class="password-wrapper">
+              <input type="password" class="form-control password-input" placeholder="Confirm your password" required>
+              <button type="button" class="password-toggle" aria-label="Toggle Password Visibility">
+                <i class="ph ph-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-container">
+              <input type="checkbox" required>
+              <span class="checkmark"></span>
+              <span class="checkbox-text">I agree to the <a href="#" class="text-accent">Terms & Conditions</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mb-4">Register</button>
+        </form>
+
+        <div class="social-divider">
+          <span>Or continue with</span>
+        </div>
+
+        <div class="social-buttons">
+          <button type="button" class="social-btn">
+            <i class="ph ph-google-logo"></i>
+            Google
+          </button>
+          <button type="button" class="social-btn">
+            <i class="ph ph-facebook-logo"></i>
+            Facebook
+          </button>
+          <button type="button" class="social-btn">
+            <i class="ph ph-apple-logo"></i>
+            Apple
+          </button>
+        </div>
+
+        <p class="text-center text-secondary" style="font-size: 14px;">
+          Already have an account? <a href="login.html" class="text-accent" style="font-weight: 500;">Sign In</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggles = document.querySelectorAll('.password-toggle');
+      toggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const input = toggle.parentElement.querySelector('.password-input');
+          const icon = toggle.querySelector('i');
+          if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('ph-eye');
+            icon.classList.add('ph-eye-slash');
+          } else {
+            input.type = 'password';
+            icon.classList.remove('ph-eye-slash');
+            icon.classList.add('ph-eye');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
