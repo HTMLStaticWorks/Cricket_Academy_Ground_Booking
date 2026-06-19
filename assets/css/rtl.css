@@ -13,9 +13,26 @@ body[dir="rtl"] .logo {
   flex-direction: row-reverse;
 }
 
-body[dir="rtl"] .nav-actions,
-body[dir="rtl"] .nav-links {
-  flex-direction: row-reverse;
+/* RTL nav-actions row-reverse only on desktop */
+@media (min-width: 1025px) {
+  body[dir="rtl"] .nav-actions,
+  body[dir="rtl"] .nav-links {
+    flex-direction: row-reverse;
+  }
+}
+
+/* RTL mobile nav: keep vertical column layout */
+@media (max-width: 1024px) {
+  body[dir="rtl"] .nav-links {
+    flex-direction: column !important;
+    right: auto;
+    left: -100%;
+    transition: left var(--transition-medium);
+  }
+  body[dir="rtl"] .nav-links.active {
+    left: 0;
+    right: auto;
+  }
 }
 
 body[dir="rtl"] .card::before {

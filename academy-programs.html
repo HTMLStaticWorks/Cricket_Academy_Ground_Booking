@@ -63,8 +63,13 @@
         <span>CricElite</span>
       </a>
 
-      <div class="nav-links">
-        <div class="nav-dropdown">
+      <div class="nav-links" id="nav-links">
+        <!-- Mobile-only Home Links -->
+        <a href="index.html" class="nav-link mobile-only ">Home 1</a>
+        <a href="home-2.html" class="nav-link mobile-only ">Home 2</a>
+
+        <!-- Desktop-only Home Dropdown -->
+        <div class="nav-dropdown desktop-only">
           <a href="#" class="nav-link ">Home <i class="ph ph-caret-down"
               style="font-size: 12px; margin-left: 4px;"></i></a>
           <div class="dropdown-content">
@@ -72,6 +77,7 @@
             <a href="home-2.html" class="dropdown-item ">Home 2</a>
           </div>
         </div>
+
         <a href="about.html" class="nav-link ">About</a>
         <a href="services.html" class="nav-link ">Services</a>
         <a href="academy-programs.html" class="nav-link active">Programs</a>
@@ -79,13 +85,28 @@
         <a href="coaches.html" class="nav-link ">Coaches</a>
         <a href="gallery.html" class="nav-link ">Gallery</a>
         <a href="contact.html" class="nav-link ">Contact</a>
+
+        <!-- Mobile-only actions inside hamburger -->
+        <div class="mobile-nav-actions mobile-only">
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
+            <i class="ph ph-arrows-left-right"></i>
+          </button>
+          <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
+            <i class="ph ph-squares-four"></i>
+          </a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
       </div>
 
-      <div class="nav-actions">
-        <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+      <!-- Desktop-only actions -->
+      <div class="nav-actions desktop-only">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle Theme">
           <i class="ph ph-moon"></i>
         </button>
-        <button class="icon-btn" id="rtl-toggle" aria-label="Toggle RTL">
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL">
           <i class="ph ph-arrows-left-right"></i>
         </button>
         <a href="dashboard.html" class="icon-btn" aria-label="Dashboard">
@@ -94,7 +115,7 @@
         <a href="register.html" class="btn btn-primary">Sign Up</a>
       </div>
 
-      <button class="icon-btn mobile-menu-toggle">
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
         <i class="ph ph-list"></i>
       </button>
     </div>
@@ -112,7 +133,7 @@
   <!-- Programs Section -->
   <section class="programs-section">
     <div class="container">
-      <div class="grid grid-3">
+      <div class="flexible-grid">
 
         <!-- Program 1 -->
         <div class="card program-card" style="padding: 0; overflow: hidden;">
@@ -313,7 +334,7 @@
       <h2 class="mb-3">Competitive Match Exposure</h2>
       <p class="text-secondary mx-auto mb-4">Our students participate in weekend leagues and
         regional cricket tournaments,<br> allowing them to translate net practice into match-winning achievements.</p>
-      <div style="display: flex; gap: 16px; justify-content: center;">
+      <div class="btn-wrap-responsive">
         <a href="coaches.html" class="btn btn-primary">Learn from Coaches</a>
         <a href="contact.html" class="btn btn-secondary">Request Trial Session</a>
       </div>

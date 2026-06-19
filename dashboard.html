@@ -58,6 +58,21 @@
       border-left-color: var(--primary-accent);
     }
 
+    .nav-item.logout-item {
+      color: #E11D48 !important;
+    }
+
+    .nav-item.logout-item:hover {
+      background: rgba(225, 29, 72, 0.1) !important;
+      color: #ff4d4d !important;
+      border-left-color: #E11D48 !important;
+    }
+
+    body[dir="rtl"] .nav-item.logout-item:hover {
+      border-left-color: transparent !important;
+      border-right-color: #E11D48 !important;
+    }
+
     .nav-item i {
       font-size: 20px;
     }
@@ -366,6 +381,7 @@
         <a href="#" class="nav-item" data-tab="academy"><i class="ph ph-student"></i> Academy</a>
         <a href="#" class="nav-item" data-tab="payments"><i class="ph ph-wallet"></i> Payments</a>
         <a href="#" class="nav-item" data-tab="settings"><i class="ph ph-gear"></i> Settings</a>
+        <a href="index.html" class="nav-item logout-item"><i class="ph ph-sign-out"></i> Logout</a>
       </nav>
       <!-- Mobile-only user action/profile footer inside the sidebar -->
       <div class="sidebar-footer"
@@ -745,9 +761,9 @@
 
       navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-          e.preventDefault();
           const targetTab = link.getAttribute('data-tab');
           if (targetTab) {
+            e.preventDefault();
             // Deactivate all links & tabs
             navLinks.forEach(l => l.classList.remove('active'));
             tabs.forEach(t => t.classList.remove('active'));

@@ -199,6 +199,40 @@
       gap: 16px;
       margin-top: 40px;
     }
+
+    @media (max-width: 768px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-top: 30px;
+      }
+      .hero-actions .btn {
+        width: 100%;
+      }
+      .analytics-visual {
+        height: 360px;
+      }
+      .performance-graph {
+        width: 220px;
+        height: 220px;
+      }
+      .player-silhouette {
+        width: 110px;
+        height: 180px;
+      }
+      .metric-card {
+        padding: 12px;
+      }
+      .metric-card.top-right {
+        top: 5%;
+        right: 10px;
+      }
+      .metric-card.bottom-left {
+        bottom: 5%;
+        left: 10px;
+      }
+    }
   </style>
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <meta name="keywords"

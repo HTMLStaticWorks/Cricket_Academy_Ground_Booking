@@ -52,3 +52,45 @@ body.light-mode .page-header p.text-secondary {
 }
 
 /* Mobile Navigation menu background for Light Mode */
+@media (max-width: 1024px) {
+  body.light-mode .nav-links {
+    background: rgba(248, 250, 252, 0.98) !important;
+    border-top: 1px solid var(--border-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+}
+
+/* Home 2 Light Mode visibility overrides */
+body.light-mode .hero-2-bg {
+  background: radial-gradient(circle at top right, rgba(0, 194, 122, 0.15) 0%, var(--primary-bg) 70%);
+}
+
+body.light-mode .performance-graph {
+  border-color: rgba(7, 17, 31, 0.2) !important;
+}
+
+body.light-mode .player-silhouette {
+  background: linear-gradient(180deg, transparent, rgba(0, 194, 122, 0.15)) !important;
+}
+
+body.light-mode .metric-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: var(--primary-accent) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-mode .metric-title {
+  color: var(--text-secondary) !important;
+}
+
+body.light-mode .metric-value {
+  color: var(--primary-accent) !important;
+}
+
+body.light-mode .metric-card.bottom-left .metric-value {
+  color: var(--third-accent) !important;
+}
+
+body.light-mode .metric-value span {
+  color: var(--text-secondary) !important;
+}

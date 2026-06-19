@@ -17,11 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Theme Toggle System (supports both desktop & mobile toggle buttons)
-  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  // Theme Toggle System (supports both desktop & mobile toggle buttons, classes and IDs)
+  let themeToggleBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle');
   
   function updateThemeIcons() {
     const isLightMode = document.body.classList.contains('light-mode');
+    themeToggleBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle');
     themeToggleBtns.forEach(btn => {
       const icon = btn.querySelector('i');
       if (icon) {
@@ -34,42 +35,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  themeToggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      const isLightMode = document.body.classList.contains('light-mode');
-      localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
-      updateThemeIcons();
+  function setupThemeToggle() {
+    themeToggleBtns = document.querySelectorAll('.theme-toggle-btn, #theme-toggle');
+    themeToggleBtns.forEach(btn => {
+      btn.onclick = () => {
+        document.body.classList.toggle('light-mode');
+        const isLightMode = document.body.classList.contains('light-mode');
+        localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+        updateThemeIcons();
+      };
     });
-  });
+  }
 
   // Load saved theme
   if (localStorage.getItem('theme') === 'light') {
     document.body.classList.add('light-mode');
-    updateThemeIcons();
+  } else {
+    document.body.classList.remove('light-mode');
   }
+  setupThemeToggle();
+  updateThemeIcons();
 
-  // RTL Toggle System (supports both desktop & mobile toggle buttons)
-  const rtlToggleBtns = document.querySelectorAll('.rtl-toggle-btn');
-  rtlToggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const isRtl = document.body.getAttribute('dir') === 'rtl';
-      const nextDir = isRtl ? 'ltr' : 'rtl';
-      document.body.setAttribute('dir', nextDir);
-      localStorage.setItem('dir', nextDir);
+  // RTL Toggle System (supports both desktop & mobile toggle buttons, classes and IDs)
+  let rtlToggleBtns = document.querySelectorAll('.rtl-toggle-btn, #rtl-toggle');
+  function setupRtlToggle() {
+    rtlToggleBtns = document.querySelectorAll('.rtl-toggle-btn, #rtl-toggle');
+    rtlToggleBtns.forEach(btn => {
+      btn.onclick = () => {
+        const isRtl = document.body.getAttribute('dir') === 'rtl';
+        const nextDir = isRtl ? 'ltr' : 'rtl';
+        document.body.setAttribute('dir', nextDir);
+        localStorage.setItem('dir', nextDir);
+      };
     });
-  });
+  }
 
   // Load saved direction
   if (localStorage.getItem('dir') === 'rtl') {
     document.body.setAttribute('dir', 'rtl');
+  } else {
+    document.body.removeAttribute('dir');
   }
+  setupRtlToggle();
 
   // Mobile Menu Toggle
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const navLinks = document.getElementById('nav-links');
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle') || document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.getElementById('nav-links') || document.querySelector('.nav-links');
   if (mobileMenuToggle && navLinks) {
-    mobileMenuToggle.addEventListener('click', () => {
+    mobileMenuToggle.onclick = () => {
       navLinks.classList.toggle('active');
       const isActive = navLinks.classList.contains('active');
       document.body.style.overflow = isActive ? 'hidden' : '';
@@ -77,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (icon) {
         icon.className = isActive ? 'ph ph-x' : 'ph ph-list';
       }
-    });
+    };
 
     // Close menu when clicking on a link
     const links = navLinks.querySelectorAll('.nav-link:not(.desktop-only > a)');

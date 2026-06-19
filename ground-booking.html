@@ -26,11 +26,11 @@
     }
 
     .booking-container {
-      background: var(--card-bg);
+      background: transparent;
       border: 1px solid var(--border-color);
       border-radius: 16px;
       padding: 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     .booking-grid {
@@ -60,13 +60,33 @@
     .form-select {
       width: 100%;
       padding: 14px 20px;
-      background: rgba(14, 26, 44, 0.5);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       color: var(--text-primary);
       font-family: var(--font-secondary);
       font-size: 16px;
       transition: all var(--transition-fast);
+    }
+
+    .form-select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C7D2E1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-repeat: no-repeat;
+      background-position: right 20px center;
+      background-size: 16px;
+      padding-right: 45px;
+    }
+
+    body.light-mode .form-select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    }
+
+    body[dir="rtl"] .form-select {
+      background-position: left 20px center;
+      padding-left: 45px;
+      padding-right: 20px;
     }
 
     .form-control:focus,
@@ -77,7 +97,6 @@
     }
 
     .calendar-widget {
-      background: rgba(14, 26, 44, 0.5);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 20px;
@@ -113,7 +132,6 @@
     }
 
     .order-summary {
-      background: rgba(14, 26, 44, 0.8);
       border-radius: 12px;
       padding: 24px;
       border: 1px solid var(--border-color);
@@ -136,6 +154,22 @@
       font-weight: 600;
       font-size: 20px;
     }
+
+    @media (max-width: 768px) {
+      .booking-container {
+        padding: 20px;
+      }
+      .time-slots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .time-slots {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <meta name="keywords"
@@ -154,26 +188,26 @@
 
       <div class="nav-links" id="nav-links">
         <!-- Mobile-only Home Links -->
-        <a href="index.html" class="nav-link mobile-only">Home 1</a>
-        <a href="home-2.html" class="nav-link mobile-only">Home 2</a>
+        <a href="index.html" class="nav-link mobile-only ">Home 1</a>
+        <a href="home-2.html" class="nav-link mobile-only ">Home 2</a>
 
         <!-- Desktop-only Home Dropdown -->
         <div class="nav-dropdown desktop-only">
-          <a href="#" class="nav-link">Home <i class="ph ph-caret-down"
+          <a href="#" class="nav-link ">Home <i class="ph ph-caret-down"
               style="font-size: 12px; margin-left: 4px;"></i></a>
           <div class="dropdown-content">
-            <a href="index.html" class="dropdown-item">Home 1</a>
-            <a href="home-2.html" class="dropdown-item">Home 2</a>
+            <a href="index.html" class="dropdown-item ">Home 1</a>
+            <a href="home-2.html" class="dropdown-item ">Home 2</a>
           </div>
         </div>
 
-        <a href="about.html" class="nav-link">About</a>
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="academy-programs.html" class="nav-link">Programs</a>
+        <a href="about.html" class="nav-link ">About</a>
+        <a href="services.html" class="nav-link ">Services</a>
+        <a href="academy-programs.html" class="nav-link ">Programs</a>
         <a href="ground-booking.html" class="nav-link active">Ground Booking</a>
-        <a href="coaches.html" class="nav-link">Coaches</a>
-        <a href="gallery.html" class="nav-link">Gallery</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="coaches.html" class="nav-link ">Coaches</a>
+        <a href="gallery.html" class="nav-link ">Gallery</a>
+        <a href="contact.html" class="nav-link ">Contact</a>
 
         <!-- Mobile-only actions inside hamburger -->
         <div class="mobile-nav-actions mobile-only">
@@ -214,7 +248,8 @@
   <header class="page-header">
     <div class="container">
       <h1>Reserve Facilities</h1>
-      <p class="text-secondary mx-auto">Book premium cricket grounds and net practice sessions<br>instantly with our digital booking system.</p>
+      <p class="text-secondary mx-auto">Book premium cricket grounds and net practice sessions<br>instantly with our
+        digital booking system.</p>
     </div>
   </header>
 
@@ -325,12 +360,14 @@
     style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
     <div class="container text-center">
       <h2 class="mb-3">Booking Rules & Guidelines</h2>
-      <p class="text-secondary mx-auto mb-5">To ensure a seamless experience for all teams and individual players,<br>please review our standard reserve protocols.</p>
+      <p class="text-secondary mx-auto mb-5">To ensure a seamless experience for all teams and individual
+        players,<br>please review our standard reserve protocols.</p>
       <div class="grid grid-3">
         <div class="card">
           <div class="info-icon mb-3"
             style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto;">
-            <i class="ph ph-clock"></i></div>
+            <i class="ph ph-clock"></i>
+          </div>
           <h3 class="mb-2">Booking Lead Time</h3>
           <p class="text-secondary" style="font-size: 14px;">Ground bookings must be reserved at least 48 hours in
             advance. Net practice sessions can be booked up to 2 hours prior to the slot.</p>
@@ -338,7 +375,8 @@
         <div class="card">
           <div class="info-icon mb-3"
             style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto;">
-            <i class="ph ph-hand-coins"></i></div>
+            <i class="ph ph-hand-coins"></i>
+          </div>
           <h3 class="mb-2">Cancellation Policy</h3>
           <p class="text-secondary" style="font-size: 14px;">Free cancellations are permitted up to 24 hours before your
             slot. Late cancellations are subject to a 50% reservation fee.</p>
@@ -346,7 +384,8 @@
         <div class="card">
           <div class="info-icon mb-3"
             style="width:50px; height:50px; background:rgba(0, 194, 122, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary-accent); font-size:24px; margin: 0 auto;">
-            <i class="ph ph-t-shirt"></i></div>
+            <i class="ph ph-t-shirt"></i>
+          </div>
           <h3 class="mb-2">Required Equipment</h3>
           <p class="text-secondary" style="font-size: 14px;">Full safety gear (pads, helmets, gloves) is mandatory on
             all turf pitches. Whites/cricket uniforms are required for stadium match play.</p>
@@ -392,8 +431,9 @@
     style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
     <div class="container text-center">
       <h2 class="mb-3">Frequently Asked Questions</h2>
-      <p class="text-secondary mx-auto mb-5">Have questions about weather disruptions or corporate tour packages?<br>Contact our dedicated booking help desk.</p>
-      
+      <p class="text-secondary mx-auto mb-5">Have questions about weather disruptions or corporate tour
+        packages?<br>Contact our dedicated booking help desk.</p>
+
       <div class="faq-accordion" style="max-width: 800px; margin: 0 auto; text-align: left;">
         <div class="accordion-item">
           <button class="accordion-header">
@@ -401,7 +441,8 @@
             <i class="ph ph-caret-down"></i>
           </button>
           <div class="accordion-content">
-            <p>In case of rain, bookings on turf pitches are rescheduled at no extra cost, or a full refund is processed if rescheduling is impossible.</p>
+            <p>In case of rain, bookings on turf pitches are rescheduled at no extra cost, or a full refund is processed
+              if rescheduling is impossible.</p>
           </div>
         </div>
         <div class="accordion-item">
@@ -410,7 +451,8 @@
             <i class="ph ph-caret-down"></i>
           </button>
           <div class="accordion-content">
-            <p>Yes! We offer customized full-day tournament packages including umpires, ball boys, catering, and digital live streams. Contact support for customized quotes.</p>
+            <p>Yes! We offer customized full-day tournament packages including umpires, ball boys, catering, and digital
+              live streams. Contact support for customized quotes.</p>
           </div>
         </div>
         <div class="accordion-item">
@@ -419,7 +461,8 @@
             <i class="ph ph-caret-down"></i>
           </button>
           <div class="accordion-content">
-            <p>Yes, we provide premium bats, pads, helmets, and balls for hire at the reception desk. Booking in advance is recommended.</p>
+            <p>Yes, we provide premium bats, pads, helmets, and balls for hire at the reception desk. Booking in advance
+              is recommended.</p>
           </div>
         </div>
         <div class="accordion-item">
@@ -428,7 +471,8 @@
             <i class="ph ph-caret-down"></i>
           </button>
           <div class="accordion-content">
-            <p>Ground hire is typically unassisted. However, you can book a certified CricElite coach to run training sessions during your booking through the Coaches page or our help desk.</p>
+            <p>Ground hire is typically unassisted. However, you can book a certified CricElite coach to run training
+              sessions during your booking through the Coaches page or our help desk.</p>
           </div>
         </div>
       </div>
@@ -446,7 +490,8 @@
             <i class="ph ph-baseball logo-icon"></i>
             <span>CricElite</span>
           </a>
-          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance, stadium-grade experiences,<br>and modern digital booking technology.</p>
+          <p class="mt-2 text-secondary">A professional cricket ecosystem combining elite<br>sports performance,
+            stadium-grade experiences,<br>and modern digital booking technology.</p>
         </div>
         <div class="footer-col">
           <h4>Academy</h4>
@@ -474,7 +519,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.</p>
+        <p>&copy; 2026 CricElite Academy & Ground Booking. All rights reserved. Designed for professional excellence.
+        </p>
       </div>
     </div>
   </footer>
