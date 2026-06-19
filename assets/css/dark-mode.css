@@ -52,6 +52,3 @@ body.light-mode .page-header p.text-secondary {
 }
 
 /* Mobile Navigation menu background for Light Mode */
-body.light-mode .nav-links {
-  background: rgba(248, 250, 252, 0.98);
-}
